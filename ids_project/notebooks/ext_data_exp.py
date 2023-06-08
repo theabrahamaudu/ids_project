@@ -63,49 +63,101 @@ def pcapng_to_csv(PCAPNG_FILE: str, CSV_FOLDER_PATH: str, BATCH_SIZE: int = 1000
         # Create empty packet dictionary
         packet_data = {}
 
-        # Extract the fields from the packet into the dictionary
+        # Extract IP fields from the packet into the dictionary
+        ip_fields = [
+            'version', 'hdr_len', 'dsfield', 'dsfield_dscp', 'dsfield_ecn', 'len', 'id', 'flags',
+            'flags_rb', 'flags_df', 'flags_mf', 'frag_offset', 'ttl', 'proto', 'checksum',
+            'checksum_status', 'src', 'addr', 'src_host', 'host', 'dst', 'dst_host'
+            ]
+
         if 'IP' in packet:
             packet_data.update({
                 'timestamp': packet.sniff_time.timestamp(),
-                'ip_version': packet.ip.version if hasattr(packet.ip, 'version') else '',
-                'ip_header_length': packet.ip.hdr_len if hasattr(packet.ip, 'hdr_len') else '',
-                'ip_dscp': getattr(packet.ip, 'ip.dsfield.dscp') if hasattr(packet.ip, 'ip.dsfield.dscp') else '',
-                'ip_ecn': getattr(packet.ip, 'ip.dsfield.ecn') if hasattr(packet.ip, 'ip.dsfield.ecn') else '',
-                'ip_total_length': packet.ip.len if hasattr(packet.ip, 'len') else '',
-                'ip_identification': packet.ip.id if hasattr(packet.ip, 'id') else '',
-                'ip_flags': packet.ip.flags if hasattr(packet.ip, 'flags') else '',
-                'ip_fragment_offset': packet.ip.frag_offset if hasattr(packet.ip, 'frag_offset') else '',
-                'ip_ttl': packet.ip.ttl if hasattr(packet.ip, 'ttl') else '',
-                'ip_protocol': packet.ip.proto if hasattr(packet.ip, 'proto') else '',
-                'ip_header_checksum': packet.ip.checksum if hasattr(packet.ip, 'checksum') else '',
-                'ip_source_ip': packet.ip.src if hasattr(packet.ip, 'src') else '',
-                'ip_destination_ip': packet.ip.dst if hasattr(packet.ip, 'dst') else ''
+                **{f'ip_{field}': getattr(packet.ip, field) if hasattr(packet.ip, field) else '' for field in ip_fields}
+            })
+        else:
+            packet_data.update({
+                **{f'ip_{field}': None for field in ip_fields}
             })
 
+        # Extract TCP fields from the packet into the dictionary
+        tcp_fields = [
+            'srcport', 'dstport', 'port', 'stream', 'completeness', 'len', 'seq', 'seq_raw',
+            'nxtseq', 'ack', 'ack_raw', 'hdr_len', 'flags', 'flags_res', 'flags_ae', 'flags_cwr',
+            'flags_ece', 'flags_urg', 'flags_ack', 'flags_push', 'flags_reset', 'flags_syn',
+            'flags_fin', 'flags_str', 'window_size_value', 'window_size', 'window_size_scalefactor',
+            'checksum', 'checksum_status', 'urgent_pointer', '', 'time_relative', 'time_delta',
+            'analysis', 'analysis_bytes_in_flight', 'analysis_push_bytes_sent'
+            ]
 
         if 'TCP' in packet:
             packet_data.update({
-                'tcp_sport': packet.tcp.srcport if hasattr(packet.tcp, 'srcport') else '',
-                'tcp_dport': packet.tcp.dstport if hasattr(packet.tcp, 'dstport') else '',
-                'tcp_seq': packet.tcp.seq if hasattr(packet.tcp, 'seq') else '',
-                'tcp_ack': packet.tcp.ack if hasattr(packet.tcp, 'ack') else '',
-                'tcp_flags': packet.tcp.flags if hasattr(packet.tcp, 'flags') else '',
-                'tcp_window': packet.tcp.window_size if hasattr(packet.tcp, 'window_size') else '',
-                'tcp_chksum': packet.tcp.checksum if hasattr(packet.tcp, 'checksum') else '',
-                'tcp_urgptr': packet.tcp.urgent_pointer if hasattr(packet.tcp, 'urgent_pointer') else '',
-                'tcp_time_relative': packet.tcp.time_relative if hasattr(packet.tcp, 'time_relative') else '',
-                'tcp_time_delta': packet.tcp.time_delta if hasattr(packet.tcp, 'time_delta') else ''
+                **{f'tcp_{field}': getattr(packet.tcp, field) if hasattr(packet.tcp, field) else '' for field in tcp_fields}
+            })
+        else:
+            packet_data.update({
+                **{f'tcp_{field}': None for field in tcp_fields}
             })
 
+        # Extract UDP fields from the packet into the dictionary
+        udp_fields = [
+            'srcport', 'dstport', 'port', 'length', 'checksum', 'checksum_status', 'stream',
+            'time_relative', 'time_delta'
+            ]
 
         if 'UDP' in packet:
             packet_data.update({
-                'udp_sport': packet.udp.srcport if hasattr(packet.udp, 'srcport') else '',
-                'udp_dport': packet.udp.dstport if hasattr(packet.udp, 'dstport') else '',
-                'udp_len': packet.udp.length if hasattr(packet.udp, 'length') else '',
-                'udp_chksum': packet.udp.checksum if hasattr(packet.udp, 'checksum') else '',
-                'udp_time_relative': packet.udp.time_relative if hasattr(packet.udp, 'time_relative') else '',
-                'udp_time_delta': packet.udp.time_delta if hasattr(packet.udp, 'time_delta') else ''
+                **{f'udp_{field}': getattr(packet.udp, field) if hasattr(packet.udp, field) else '' for field in udp_fields}
+            })
+        else:
+            packet_data.update({
+                **{f'udp_{field}': None for field in udp_fields}
+            })
+
+        # Extract ETH fields from the packet into the dictionary
+        eth_fields = [
+            'dst', 'dst_resolved', 'dst_oui', 'dst_oui_resolved', 'addr', 'addr_resolved', 'addr_oui',
+            'addr_oui_resolved', 'dst_lg', 'lg', 'dst_ig', 'ig', 'src', 'src_resolved', 'src_oui',
+            'src_oui_resolved', 'src_lg', 'src_ig', 'type'
+            ]
+
+        if 'ETH' in packet:
+            packet_data.update({
+                **{f'eth_{field}': getattr(packet.eth, field) if hasattr(packet.eth, field) else '' for field in eth_fields}
+            })
+        else:
+            packet_data.update({
+                **{f'eth_{field}': None for field in eth_fields}
+            })
+
+        # Extract ICMP fields from the packet into the dictionary
+        icmp_fields = [
+            'type', 'code', 'checksum', 'checksum_status', 'ident', 'ident_le', 'seq',
+            'seq_le', 'data_len'
+            ]
+
+        if 'ICMP' in packet:
+            packet_data.update({
+                **{f'icmp_{field}': getattr(packet.icmp, field) if hasattr(packet.icmp, field) else '' for field in icmp_fields}
+            })
+        else:
+            packet_data.update({
+                **{f'icmp_{field}': None for field in icmp_fields}
+            })
+
+        # Extract ARP fields from the packet into the dictionary
+        arp_fields = [
+            'hw_type', 'proto_type', 'hw_size', 'proto_size', 'opcode', 'src_hw_mac',
+            'src_proto_ipv4', 'dst_hw_mac', 'dst_proto_ipv4'
+            ]
+
+        if 'ARP' in packet:
+            packet_data.update({
+                **{f'arp_{field}': getattr(packet.arp, field) if hasattr(packet.arp, field) else '' for field in arp_fields}
+            })
+        else:
+            packet_data.update({
+                **{f'arp_{field}': None for field in arp_fields}
             })
 
         # Append the dictionary to the list
