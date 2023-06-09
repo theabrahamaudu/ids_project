@@ -11,7 +11,7 @@ from tqdm import tqdm
 
 
 
-def pcapng_to_csv(PCAPNG_FILE: str, CSV_FOLDER_PATH: str, BATCH_SIZE: int = 1000,
+def pcapng_to_csv(PCAPNG_FILE: str, CSV_FOLDER_PATH: str, CSV_NAME: str=None, BATCH_SIZE: int = 1000,
                   data_desc_path: str = '../data/external/dataset_description.xlsx',
                   ):
     """_summary_
@@ -41,7 +41,10 @@ def pcapng_to_csv(PCAPNG_FILE: str, CSV_FOLDER_PATH: str, BATCH_SIZE: int = 1000
     file_name = re.search(r'([^/\\]+)\.\w+$', PCAPNG_FILE).group(1)
 
     # Set CSV file path
-    CSV_FILE_PATH = str(CSV_FOLDER_PATH+"/"+file_name+".csv")
+    if CSV_NAME != None:
+        CSV_FILE_PATH = str(CSV_FOLDER_PATH+"/"+CSV_NAME+".csv")
+    else:
+        CSV_FILE_PATH = str(CSV_FOLDER_PATH+"/"+file_name+".csv")
 
     # Initialize counter and limit
     COUNT = 0
@@ -194,19 +197,19 @@ def pcapng_to_csv(PCAPNG_FILE: str, CSV_FOLDER_PATH: str, BATCH_SIZE: int = 1000
     return packets_csv
 
 # ----------------------------------------------------------------
-# Demo
-if __name__ == '__main__':
+# # Demo
+# if __name__ == '__main__':
 
-    # Specify the path to the pcapng file
-    PCAPNG_FILE_PATH = '../data/external/scan-hostport-6-dec.pcap'
+#     # Specify the path to the pcapng file
+#     PCAPNG_FILE_PATH = '../data/external/dos-synflooding-5-dec.pcap'
 
-    # Specify destination file path
-    CSV_FILE = '../data/interim'
+#     # Specify destination file path
+#     CSV_FILE = '../data/interim'
 
-    # Set the batch size for DataFrame conversion and CSV file path
-    # BATCH_SIZE = 1000  # Adjust the batch size as needed
+#     # Set the batch size for DataFrame conversion and CSV file path
+#     # BATCH_SIZE = 1000  # Adjust the batch size as needed
 
-    benign = pcapng_to_csv(PCAPNG_FILE=PCAPNG_FILE_PATH,
-                  CSV_FOLDER_PATH=CSV_FILE)
+#     benign = pcapng_to_csv(PCAPNG_FILE=PCAPNG_FILE_PATH,
+#                   CSV_FOLDER_PATH=CSV_FILE)
 
-    print(benign.head())
+#     print(benign.head())
