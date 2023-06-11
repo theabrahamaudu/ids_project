@@ -228,5 +228,5 @@ if __name__ == '__main__':
     load_and_filter_files(directory_path=directory_path,
                           pcap_files_list=pcap_files_list,
                           destination_path=destination_path,
-                          merge=False,
+                          merge=True,
                           pick_up=True)

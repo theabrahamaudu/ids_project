@@ -194,6 +194,10 @@ def pcapng_to_csv(PCAPNG_FILE: str, CSV_FOLDER_PATH: str, CSV_NAME: str=None, BA
         packets_df.to_csv(CSV_FILE_PATH, index=False, header=False, mode='a')
 
     packets_csv: pd.DataFrame = pd.read_csv(CSV_FILE_PATH)
+
+    # Close the capture session
+    capture.close()
+    
     return packets_csv
 
 # ----------------------------------------------------------------
