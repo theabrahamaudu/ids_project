@@ -1,4 +1,0 @@
-[core]
-    remote = localremote
-['remote "localremote"']
-    url = C:/Users/ABRAHA~1/AppData/Local/Temp/dvc-storage
