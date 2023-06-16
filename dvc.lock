@@ -1,0 +1,39 @@
+schema: '2.0'
+stages:
+  one_stage_pipeline:
+    cmd: papermill notebooks/model_exp.ipynb notebooks/model_exp_out.ipynb
+    deps:
+    - path: notebooks/X_test_scaled.csv
+      md5: 13570e4e45e99e7667997d68b7729aaa
+      size: 3245634
+    - path: notebooks/X_train_scaled.csv
+      md5: 52659e3a6978229dcc39f54e4e47711b
+      size: 12980123
+    - path: notebooks/model_exp.ipynb
+      md5: 6c812581880197302ddd02e1ccde8116
+      size: 13781
+    - path: notebooks/y_test.csv
+      md5: 2f970fc6ee9ac8544b32b0632c595118
+      size: 15783
+    - path: notebooks/y_train.csv
+      md5: b8385eb7bb5f2dbfa55bd581c6788057
+      size: 63119
+    params:
+      params.yaml:
+        base:
+          project: ids_model
+        train:
+          models_dir:
+          model_fname: model.joblib
+          params:
+            random_state: 42
+            lr: 0.01
+            n_estimators: 76
+            max_depth: 10
+    outs:
+    - path: notebooks/metrics.json
+      md5: 7b3edc956a2fba20fac103d69ed24114
+      size: 66
+    - path: notebooks/model.joblib
+      md5: b182e9f324f0719b7a0fb25218178c71
+      size: 11748956
