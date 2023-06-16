@@ -7,5 +7,5 @@ train:
   params:
     random_state: 42
     lr: 0.01
-    n_estimators: 76
-    max_depth: 10
+    n_estimators: 50
+    max_depth: 5

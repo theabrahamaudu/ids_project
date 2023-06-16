@@ -1,7 +1,8 @@
 schema: '2.0'
 stages:
   one_stage_pipeline:
-    cmd: papermill notebooks/model_exp.ipynb notebooks/model_exp_out.ipynb
+    cmd: papermill notebooks/model_exp.ipynb notebooks/model_exp_out.ipynb -p random_state
+      42 -p lr 0.01 -p n_estimators 50 -p max_depth 5
     deps:
     - path: notebooks/X_test_scaled.csv
       md5: 13570e4e45e99e7667997d68b7729aaa
@@ -10,8 +11,8 @@ stages:
       md5: 52659e3a6978229dcc39f54e4e47711b
       size: 12980123
     - path: notebooks/model_exp.ipynb
-      md5: 6c812581880197302ddd02e1ccde8116
-      size: 13781
+      md5: 39103aa676455126f91bbd66e9b65548
+      size: 13827
     - path: notebooks/y_test.csv
       md5: 2f970fc6ee9ac8544b32b0632c595118
       size: 15783
@@ -28,12 +29,12 @@ stages:
           params:
             random_state: 42
             lr: 0.01
-            n_estimators: 76
-            max_depth: 10
+            n_estimators: 50
+            max_depth: 5
     outs:
     - path: notebooks/metrics.json
-      md5: 7b3edc956a2fba20fac103d69ed24114
+      md5: 348db1feb5e39a113331e397b94d1691
       size: 66
     - path: notebooks/model.joblib
-      md5: b182e9f324f0719b7a0fb25218178c71
-      size: 11748956
+      md5: b1c6400bc9effa933fb91cbabe463c12
+      size: 2400285

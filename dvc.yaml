@@ -1,6 +1,10 @@
 stages:
   one_stage_pipeline:
     cmd: papermill notebooks/model_exp.ipynb notebooks/model_exp_out.ipynb
+          -p random_state ${train.params.random_state}
+          -p lr ${train.params.lr}
+          -p n_estimators ${train.params.n_estimators}
+          -p max_depth ${train.params.max_depth}
     deps:
     - notebooks/X_test_scaled.csv
     - notebooks/X_train_scaled.csv
