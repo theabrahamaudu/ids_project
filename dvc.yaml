@@ -3,17 +3,17 @@
 # to customize your stages even more
 stages:
   run_model_exp:
-    cmd: papermill ids_project/notebooks/model_exp.ipynb ids_project/notebooks/model_exp_out.ipynb
+    cmd: papermill notebooks/model_exp.ipynb notebooks/model_exp_out.ipynb
     deps:
-    - ids_project/notebooks/X_test_scaled.csv
-    - ids_project/notebooks/X_train_scaled.csv
-    - ids_project/notebooks/model_exp.ipynb
-    - ids_project/notebooks/y_test.csv
-    - ids_project/notebooks/y_train.csv
+    - notebooks/X_test_scaled.csv
+    - notebooks/X_train_scaled.csv
+    - notebooks/model_exp.ipynb
+    - notebooks/y_test.csv
+    - notebooks/y_train.csv
     outs:
-    - ids_project/notebooks/model.joblib
+    - notebooks/model.joblib
     metrics:
-    - ids_project/notebooks/metrics.json:
+    - notebooks/metrics.json:
         cache: false
     params:
     - base

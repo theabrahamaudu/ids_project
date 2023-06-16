@@ -2,3 +2,4 @@
 /X_train_scaled.csv
 /y_test.csv
 /y_train.csv
+/model.joblib
