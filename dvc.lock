@@ -10,8 +10,8 @@ stages:
       md5: 52659e3a6978229dcc39f54e4e47711b
       size: 12980123
     - path: notebooks/model_exp.ipynb
-      md5: b7799951ee3b4830d6a7ab6b44422bab
-      size: 11830
+      md5: 79140b6ff7111601c80f4f3f2cb65ade
+      size: 12788
     - path: notebooks/y_test.csv
       md5: 2f970fc6ee9ac8544b32b0632c595118
       size: 15783
@@ -27,13 +27,13 @@ stages:
           model_fname: model.joblib
           params:
             random_state: 42
-            lr: 0.1
-            n_estimators: 50
-            max_depth: 3
+            lr: 0.01
+            n_estimators: 75
+            max_depth: 10
     outs:
     - path: notebooks/metrics.json
-      md5: 348db1feb5e39a113331e397b94d1691
+      md5: 7b3edc956a2fba20fac103d69ed24114
       size: 66
     - path: notebooks/model.joblib
-      md5: 5aebeeb1f72cb241ed475cccf747ce14
-      size: 4900493
+      md5: af7e284fd362b3d3219a40d264ecb78b
+      size: 11574060
