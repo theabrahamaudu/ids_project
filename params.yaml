@@ -1,0 +1,11 @@
+base:
+  project: ids_model
+
+train:
+  models_dir:
+  model_fname: model.joblib
+  params:
+    random_state: 42
+    lr: 0.01
+    n_estimators: 100
+    max_depth: 5

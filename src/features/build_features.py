@@ -299,25 +299,25 @@ def preprocess(data: DataFrame,
 
         return data
     
+## -------------- Uncomment to Preprocess Labelled Dataset -------------------##
+# if __name__=='__main__':
 
-if __name__=='__main__':
+#     raw_data = pd.read_csv('./data/labelled/all_data_labelled.csv')
 
-    raw_data = pd.read_csv('./data/labelled/all_data_labelled.csv')
-
-    X_train_scaled, X_test_scaled, y_train, y_test = preprocess(data=raw_data,
-                                                                train=True,
-                                                                save=True)
+#     X_train_scaled, X_test_scaled, y_train, y_test = preprocess(data=raw_data,
+#                                                                 train=True,
+#                                                                 save=True)
     
 
-    print('train features shape:')
-    print(X_train_scaled.shape)
+#     print('train features shape:')
+#     print(X_train_scaled.shape)
 
-    print('\ntest features shape:')
-    print(X_test_scaled.shape)
+#     print('\ntest features shape:')
+#     print(X_test_scaled.shape)
 
-    print("\ntrain targets shape")
-    print(y_train.shape)
+#     print("\ntrain targets shape")
+#     print(y_train.shape)
 
-    print("\ntest targets shape")
-    print(y_test.shape)   
+#     print("\ntest targets shape")
+#     print(y_test.shape)   
 
