@@ -251,6 +251,11 @@ def scale_data(data: DataFrame=None,
 
         return data_scaled
 
+label_mapping: dict={
+                    'normal':0, 'dos_synflooding':1, 'mirai_ackflooding':2, 'host_discovery':3,
+                    'telnet_bruteforce':4, 'mirai_httpflooding':5, 'mirai_udpflooding':6,
+                    'mitm_arpspoofing':7, 'scanning_host':8, 'scanning_port':9, 'scanning_os':10
+                    }
 
 def preprocess(data: DataFrame,
                train: bool=True,

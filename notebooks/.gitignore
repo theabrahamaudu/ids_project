@@ -1,5 +1,16 @@
+# data
 /X_test_scaled.csv
 /X_train_scaled.csv
 /y_test.csv
 /y_train.csv
 /model.joblib
+
+# models
+/bilstm_cnn_model.h5
+/blstm_model.h5
+/cnn_model.h5
+/fnn_model.h5
+/gbc_model.joblib
+/lgb_model.joblib
+/svm_model.joblib
+/xgb_model.joblib
