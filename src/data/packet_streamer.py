@@ -4,67 +4,30 @@ This module is used to read and convert packet data from pcapng file to csv form
 
 """
 
-import re
 import pyshark
 import pandas as pd
+from pandas import DataFrame
 from tqdm import tqdm
 
 
-
-def pcapng_to_csv(PCAPNG_FILE: str,
-                  CSV_FOLDER_PATH: str,
-                  CSV_NAME: str=None,
-                  BATCH_SIZE: int = 1000,
-                  data_desc_path: str = './data/external/dataset_description.xlsx',
-                  ):
+def pcap_stream(PCAPNG_FILE: str) -> DataFrame:
     """_summary_
 
     Args:
         PCAPNG_FILE (str): _description_
-        CSV_FILE_PATH (str): _description_
-        BATCH_SIZE (int, optional): _description_. Defaults to 1000.
-        data_desc_path (str, optional): _description_. Defaults to '../data/external/dataset_description.xlsx'.
 
     Returns:
-        _type_: _description_
-    """    
-    # Load data description
-    data_description = pd.read_excel(data_desc_path, 
-                                 sheet_name='Files & description', 
-                                 header=2)
+        DataFrame: _description_
 
-    # Create an empty list to store the packets
-    packets_list = []
-    packets_df = pd.DataFrame()  # Initialize the final DataFrame
+    Yields:
+        Iterator[DataFrame]: _description_
+    """    
 
     # Open the pcapng file using FileCapture
     capture = pyshark.FileCapture(PCAPNG_FILE, keep_packets=False)
 
-    # Get pcapng filename
-    file_name = re.search(r'([^/\\]+)\.\w+$', PCAPNG_FILE).group(1)
-
-    # Set CSV file path
-    if CSV_NAME != None:
-        CSV_FILE_PATH = str(CSV_FOLDER_PATH+"/"+CSV_NAME+".csv")
-    else:
-        CSV_FILE_PATH = str(CSV_FOLDER_PATH+"/"+file_name+".csv")
-
-    # Initialize counter and limit
-    COUNT = 0
-    LIMIT = int(data_description[data_description['File Name']==\
-                             str(file_name+".pcap")]\
-                            ['# Total Packets'].iloc[0])
-
-    # Initialize batch counter
-    BATCH_COUNT = 0
-
     # Iterate over the packets
-    for packet in tqdm(capture, desc="Reading packets", unit=" packets", total=LIMIT):
-        if COUNT >= LIMIT:
-            break
-
-        # Increment the loop counter
-        COUNT +=1
+    for packet in tqdm(capture, desc="Reading packets", unit=" packets"):
 
         # Create empty packet dictionary
         packet_data = {}
@@ -167,42 +130,12 @@ def pcapng_to_csv(PCAPNG_FILE: str,
                 **{f'arp_{field}': None for field in arp_fields}
             })
 
-        # Append the dictionary to the list
-        packets_list.append(packet_data)
-
-        # Convert packets_list to DataFrame after batch size is reached
-        if len(packets_list) >= BATCH_SIZE:
-            batch_df = pd.DataFrame(packets_list)
-            packets_df = pd.concat([packets_df, batch_df], ignore_index=True)
-            packets_list = []  # Clear the packets_list
-
-            # Increment the batch counter
-            BATCH_COUNT += 1
-
-            # save batch to csv
-            if BATCH_COUNT == 1:
-                # First update: Clear the existing file and add headers
-                packets_df.to_csv(CSV_FILE_PATH, index=False, header=True, mode='w')
-            else:
-                # Subsequent updates: Append rows without headers
-                packets_df.to_csv(CSV_FILE_PATH, index=False, header=False, mode='a')
-            packets_df = pd.DataFrame()  # Clear the packets_df
-
-    # Convert any remaining packets in packets_list to DataFrame
-    if len(packets_list) > 0:
-        batch_df = pd.DataFrame(packets_list)
-        packets_df = pd.concat([packets_df, batch_df], ignore_index=True)
-
-    # Save any remaining packets_df to a CSV file
-    if not packets_df.empty:
-        packets_df.to_csv(CSV_FILE_PATH, index=False, header=False, mode='a')
-
-    packets_csv: pd.DataFrame = pd.read_csv(CSV_FILE_PATH)
+        # convert dictionary to dataframe
+        df = pd.DataFrame(packet_data, index=[0])
+        yield df
 
     # Close the capture session
     capture.close()
-    
-    return packets_csv
 
 # ----------------------------------------------------------------
 # # Demo
@@ -221,3 +154,4 @@ def pcapng_to_csv(PCAPNG_FILE: str,
 #                   CSV_FOLDER_PATH=CSV_FILE)
 
 #     print(benign.head())
+

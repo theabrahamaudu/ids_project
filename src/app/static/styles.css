@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2e2a2a;
+    text-align: center;
+}
+
+h1 {
+    color: #b49999;
+}
+
+p {
+    color: #beaeae;
+}
+
+/* Custom style for upload paragraph */
+p.upload {
+    color: #d0ff00; /* Change this to the desired color */
+}
+
+/* Form style */
+form {
+    margin-top: 20px;
+}
+
+/* Styling for file input */
+.file-input {
+    display: none;
+}
+
+/* Styling for file label */
+.file-label {
+    padding: 10px 10px;
+    background-color: #337ab7;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Styling for the "No file chosen" text */
+.file-label::after {
+    content: "No file chosen";
+    color: #f1eaea; /* Change this to the desired color */
+    margin-left: 10px;
+}
+
+.file-selected::after {
+    display: inline-block;
+    content: attr(data-content);
+    color: #f7f2f2;
+}
+
+/* Submit button style */
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Submit button hover effect */
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
