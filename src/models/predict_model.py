@@ -1,4 +1,6 @@
 import joblib
+import pandas as pd
+import pyshark
 from xgboost import DMatrix
 from src.features.build_features import preprocess, label_mapping
 from src.data.packet_streamer import pcap_stream
@@ -7,6 +9,8 @@ MODEL_DIR = './models/xgb_model.joblib'
 model = joblib.load(MODEL_DIR)
 
 reversed_label = {value: key for key, value in label_mapping.items()}
+
+
 
 def get_inference(data):
     print('running')

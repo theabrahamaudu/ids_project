@@ -73,3 +73,35 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #45a049;
 }
+
+
+/* Progress Bar Style */
+#progress-container {
+    display: none;
+    width: 20%;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 10px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#progress-bar {
+    background-color: #4CAF50;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    transition: width 0.3s ease-in-out;
+}
+
+#progress-text {
+    line-height: 30px;
+    color: #faf5f5;
+    font-weight: bold;
+    text-align: center;
+}

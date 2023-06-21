@@ -5,6 +5,7 @@ This module is used to read and convert packet data from pcapng file to csv form
 """
 
 import pyshark
+from pyshark import FileCapture
 import pandas as pd
 from pandas import DataFrame
 from tqdm import tqdm

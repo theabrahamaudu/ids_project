@@ -1,18 +1,21 @@
 """
-This module contains the API service for predicting credit card default based on data supplied by user on web UI
+This module contains the API service for predicting network attack based on network packet data supplied by user on web UI
 """
+
+import os
 import time
 import joblib
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, File, UploadFile
 import uvicorn
 import pandas as pd
 from pydantic import BaseModel
 from xgboost import DMatrix
 from src.features.build_features import preprocess
+from src.data.packet_streamer import pcap_stream
 from src.utils.backend_log_config import backend as logger
 # Frontend
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 
 
@@ -35,6 +38,8 @@ model = joblib.load(MODEL_DIR)
 # Data Validation
 class Data(BaseModel):
     model: str
+    data: dict
+    packet: dict
 
 
 # API test endpoint
@@ -51,13 +56,44 @@ def test_page():
 async def home_page(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
-# File selection endpoint
-@app.post("/select_file")
-async def upload_file(request: Request):
-    form = await request.form()
-    file = form["file-upload"]
+# File upload endpoint
+@app.post("/upload")
+async def upload_file(request: Request, file: UploadFile = File(None)):
     filename = file.filename if file else "No file chosen"
-    return templates.TemplateResponse("index.html", {"request": request, "filename": filename})
+    success_message = ""
+
+    try:
+        if filename:
+            # File was selected and submit button was clicked, save the file
+            main_directory = os.path.dirname(os.path.abspath(__file__))
+            file_path = os.path.join(main_directory, "temp", filename)
+            with open(file_path, "wb") as f:
+                contents = await file.read()
+                f.write(contents)
+            logger.info(f"File '{filename}' uploaded and saved to: {file_path}")
+            success_message = f"{filename} Uploaded successfully!"
+    except Exception as e:
+        logger.warning(f"File upload failed: {e}")
+        success_message = f"File upload failed: {e}"
+
+    return templates.TemplateResponse("home.html", {"request": request, "filename": filename, "success_message": success_message})
+
+# File processing endpoint
+@app.post("/process")
+def process_file(data: dict):
+
+    try:
+        filename = data['filename']
+        temp_df = pd.DataFrame()
+        for i in pcap_stream(filename):
+            temp_df = pd.concat([temp_df, i], axis=0)
+        temp_df.to_csv(f'{filename[:-5]}.csv', index=False, header=True, mode='w')
+        return {'response': "Processing complete!"}
+    except Exception as e:
+        logger.error(f"Processing failed: \n{e}")
+        return {'response': f"Processing failed: \n{e}"}
+    
+    
 
 # Prediction endpoint
 @app.post("/predict")
@@ -75,6 +111,7 @@ def predict(packet: dict):
     logger.info("preprocessing web UI data")
 
     try:
+        packet = packet["data"]
         data_point = preprocess(packet, train=False)
         data_point = DMatrix(data_point)
     except Exception as exc:
