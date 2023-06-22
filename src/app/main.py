@@ -4,12 +4,17 @@ This module contains the API service for predicting network attack based on netw
 
 import os
 import time
+import asyncio
+import concurrent.futures
+from multiprocessing import Process
 import joblib
 from fastapi import FastAPI, Request, File, UploadFile
 import uvicorn
 import pandas as pd
+import numpy as np
 from pydantic import BaseModel
 from xgboost import DMatrix
+import pyshark
 from src.features.build_features import preprocess
 from src.data.packet_streamer import pcap_stream
 from src.utils.backend_log_config import backend as logger
@@ -79,22 +84,31 @@ async def upload_file(request: Request, file: UploadFile = File(None)):
     return templates.TemplateResponse("home.html", {"request": request, "filename": filename, "success_message": success_message})
 
 # File processing endpoint
+
+def process_pcap(filename):
+    print('running data parse')
+    temp_df = pd.DataFrame()
+    print('dataframe created')
+    for i in pcap_stream(filename):
+        temp_df = pd.concat([temp_df, i], axis=0)
+    print('\nPreprocessing data')
+    temp_df = preprocess(temp_df, train=False)
+    np.savetxt(str(filename[:-5]+'.csv'), temp_df, delimiter=',')
+    print('process complete')
+
 @app.post("/process")
 def process_file(data: dict):
-
     try:
         filename = data['filename']
-        temp_df = pd.DataFrame()
-        for i in pcap_stream(filename):
-            temp_df = pd.concat([temp_df, i], axis=0)
-        temp_df.to_csv(f'{filename[:-5]}.csv', index=False, header=True, mode='w')
+        p = Process(target=process_pcap, args=(filename,))
+        p.start()
+        p.join()
         return {'response': "Processing complete!"}
     except Exception as e:
-        logger.error(f"Processing failed: \n{e}")
+        logger.error(f"Processing failed: {e}")
         return {'response': f"Processing failed: \n{e}"}
     
     
-
 # Prediction endpoint
 @app.post("/predict")
 def predict(packet: dict):
@@ -112,8 +126,8 @@ def predict(packet: dict):
 
     try:
         packet = packet["data"]
-        data_point = preprocess(packet, train=False)
-        data_point = DMatrix(data_point)
+        packet = pd.DataFrame([packet])
+        data_point = DMatrix(packet)
     except Exception as exc:
         logger.exception(f"Error preprocessing data:\n{exc}")
 
@@ -124,7 +138,7 @@ def predict(packet: dict):
         elapsed_time = time.perf_counter()-start_time
         packet = {"result": result, "time": elapsed_time}
 
-        logger.info("sending result to frontend")
+        logger.info(f"sending result '{result}'  to frontend")
     except Exception as exc:
         logger.exception(f"Error generating prediction:\n{exc}")
     return packet
