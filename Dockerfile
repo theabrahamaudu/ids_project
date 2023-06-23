@@ -11,7 +11,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY run.sh /app/run.sh
 RUN chmod +x /app/run.sh
 
-EXPOSE 80
+EXPOSE 8080
 EXPOSE 8000
 EXPOSE 8501
 

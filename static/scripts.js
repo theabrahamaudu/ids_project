@@ -25,7 +25,7 @@ uploadForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "/upload_file");
+    xhr.open("POST", "/upload");
 
     xhr.upload.onprogress = function (event) {
         if (event.lengthComputable) {
