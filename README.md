@@ -55,3 +55,8 @@ Project Organization
 --------
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+
+## Create Elastic Compute Repo
+ECR URI: 663646653196.dkr.ecr.us-east-1.amazonaws.com/cb_ids_iot
+
+## Create EC2 instance

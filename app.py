@@ -32,8 +32,8 @@ app = FastAPI(title='Cloud Based IDS for IoT Networks',
               )
 
 # Mount the static files directory
-app.mount("/static", StaticFiles(directory="./src/app/static"), name="static")
-templates = Jinja2Templates(directory="./src/app/templates")
+app.mount("/static", StaticFiles(directory="./static"), name="static")
+templates = Jinja2Templates(directory="./templates")
 
 # Load model
 MODEL_DIR = './models/xgb_model.joblib'
@@ -146,4 +146,4 @@ def predict(packet: dict):
 
 if __name__ == '__main__':
     logger.info("API service running")
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)

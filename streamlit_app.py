@@ -9,17 +9,17 @@ The result is presented as percentage probability to default on credit card paym
 
 import os
 import time
-import aiohttp
-import asyncio
-import threading
-from multiprocessing import Process
+# import aiohttp
+# import asyncio
+# import threading
+# from multiprocessing import Process
 import pandas as pd
 import numpy as np
 import streamlit as st
-import pyshark
+# import pyshark
 import requests
 from src.utils.frontend_log_config import frontend as logger
-from src.data.packet_streamer import pcap_stream
+# from src.data.packet_streamer import pcap_stream
 from src.models.predict_model import reversed_label
 
 # specify temporary files folder
