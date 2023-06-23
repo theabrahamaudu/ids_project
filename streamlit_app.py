@@ -60,7 +60,7 @@ def run():
         
         if st.button("Process data"):
             with st.spinner("Processing file..."):
-                state = requests.post("https://54.173.41.246:8080/api/process", json={"filename":filename}).json()
+                state = requests.post("https://54.173.41.246:8080/process", json={"filename":filename}).json()
                 st.info(state['response'])
         
         if st.button("Activate IDS"):
@@ -87,7 +87,7 @@ def run():
                         packet = dict(zip(range(len(packet)), packet))
 
                         
-                        response = session.post("https://54.173.41.246:8080/api/predict", json={"data":packet}).json()
+                        response = session.post("https://54.173.41.246:8080/predict", json={"data":packet}).json()
 
                         prediction = response["result"]
                         pred_time = response["time"]
