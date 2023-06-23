@@ -20,6 +20,6 @@ tqdm
 pyshark
 fastapi
 uvicorn
-pcapkit
+pypcapkit
 tensorflow==2.10
 dvc
