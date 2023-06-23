@@ -85,10 +85,10 @@ jobs:
       - name: Pull latest images
         run: |
          docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
-         
-      # - name: Stop and remove container if running
-      #   run: |
-      #    docker ps -q --filter "name=cb_ids_iot" | grep -q . && docker stop cb_ids_iot && docker rm -fv cb_ids_iot
+      # Comment out stop and remove block on first run   
+      - name: Stop and remove container if running
+        run: |
+         docker ps -q --filter "name=cb_ids_iot" | grep -q . && docker stop cb_ids_iot && docker rm -fv cb_ids_iot
        
       - name: Run Docker Image to serve users
         run: |
