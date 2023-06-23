@@ -15,7 +15,6 @@ streamlit
 xgboost
 lightgbm
 joblib
-yaml
 scikit-learn
 tqdm
 pyshark
