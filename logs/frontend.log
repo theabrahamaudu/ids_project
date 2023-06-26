@@ -1,0 +1,883 @@
+2023-06-21 03:00:48,344:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:01:22,674:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:01:53,354:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:02:03,956:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:02:34,815:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:02:34,821:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:02:41,857:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:02:41,863:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:02:41,864:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:02:41,899:streamlit_app.py:run:ERROR:An error occurred whilst attempting to call API:
+Traceback (most recent call last):
+  File "C:\Users\Abraham Audu\Documents\BizDocs Files\THE THREE\Intrusion Detection System\ids_project\src\app\streamlit_app.py", line 58, in run
+    for packet in pcap_stream(file):
+  File "c:\users\abraham audu\documents\bizdocs files\the three\intrusion detection system\ids_project\src\data\packet_streamer.py", line 27, in pcap_stream
+    capture = pyshark.FileCapture(PCAPNG_FILE, keep_packets=False)
+  File "C:\Users\Abraham Audu\Documents\BizDocs Files\THE THREE\Intrusion Detection System\ids_project\venv\lib\site-packages\pyshark\capture\file_capture.py", line 38, in __init__
+    super(FileCapture, self).__init__(display_filter=display_filter, only_summaries=only_summaries,
+  File "C:\Users\Abraham Audu\Documents\BizDocs Files\THE THREE\Intrusion Detection System\ids_project\venv\lib\site-packages\pyshark\capture\capture.py", line 88, in __init__
+    self._setup_eventloop()
+  File "C:\Users\Abraham Audu\Documents\BizDocs Files\THE THREE\Intrusion Detection System\ids_project\venv\lib\site-packages\pyshark\capture\capture.py", line 170, in _setup_eventloop
+    current_eventloop = asyncio.get_event_loop_policy().get_event_loop()
+  File "C:\Program Files\python310\lib\asyncio\events.py", line 656, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+RuntimeError: There is no current event loop in thread 'ScriptRunner.scriptThread'.
+2023-06-21 03:05:18,490:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:05:18,498:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:05:26,190:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:05:26,196:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:05:26,197:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:07:29,983:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:07:29,990:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:07:29,992:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:07:50,378:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:07:50,385:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:07:54,466:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:07:54,472:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:07:54,473:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:18:16,194:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:18:16,203:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:18:16,223:streamlit_app.py:run:INFO:network packet data saved to temp dir:
+2023-06-21 03:18:19,272:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:18:19,282:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:18:19,286:streamlit_app.py:run:INFO:network packet data saved to temp dir:
+2023-06-21 03:18:19,288:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:18:44,903:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:18:44,910:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:18:44,913:streamlit_app.py:run:INFO:network packet data saved to temp dir:
+2023-06-21 03:18:49,721:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:18:58,580:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:18:58,589:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:18:58,706:streamlit_app.py:run:INFO:network packet data saved to temp dir:
+2023-06-21 03:19:12,600:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:19:12,610:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:19:12,613:streamlit_app.py:run:INFO:network packet data saved to temp dir:
+2023-06-21 03:19:12,615:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:21:34,127:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:21:34,133:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:21:34,135:streamlit_app.py:run:INFO:network packet data saved to 'C:\Users\Abraham Audu\Documents\BizDocs Files\THE THREE\Intrusion Detection System\ids_project\src\app\temp\dos-synflooding-5-dec.pcap':
+2023-06-21 03:21:37,273:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:21:37,279:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:21:37,307:streamlit_app.py:run:INFO:network packet data saved to 'C:\Users\Abraham Audu\Documents\BizDocs Files\THE THREE\Intrusion Detection System\ids_project\src\app\temp\dos-synflooding-5-dec.pcap':
+2023-06-21 03:21:37,309:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:23:32,063:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:23:32,071:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:23:32,075:streamlit_app.py:run:INFO:network packet data saved to 'C:\Users\Abraham Audu\Documents\BizDocs Files\THE THREE\Intrusion Detection System\ids_project\src\app\temp\dos-synflooding-5-dec.pcap':
+2023-06-21 03:23:54,656:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:23:54,666:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:23:54,668:streamlit_app.py:run:INFO:network packet data saved to 'C:\Users\Abraham Audu\Documents\BizDocs Files\THE THREE\Intrusion Detection System\ids_project\src\app\temp\dos-synflooding-5-dec.pcap':
+2023-06-21 03:23:54,671:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:24:26,066:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:24:26,072:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:24:26,074:streamlit_app.py:run:INFO:network packet data saved to 'C:\Users\Abraham Audu\Documents\BizDocs Files\THE THREE\Intrusion Detection System\ids_project\src\app\temp\dos-synflooding-5-dec.pcap':
+2023-06-21 03:24:28,031:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:24:28,036:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:24:28,040:streamlit_app.py:run:INFO:network packet data saved to 'C:\Users\Abraham Audu\Documents\BizDocs Files\THE THREE\Intrusion Detection System\ids_project\src\app\temp\dos-synflooding-5-dec.pcap':
+2023-06-21 03:24:28,042:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:26:32,095:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:26:32,100:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:26:32,135:streamlit_app.py:run:INFO:network packet data saved to 'C:\Users\Abraham Audu\Documents\BizDocs Files\THE THREE\Intrusion Detection System\ids_project\src\app\temp\dos-synflooding-5-dec.pcap':
+2023-06-21 03:26:34,418:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:26:34,427:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:26:34,430:streamlit_app.py:run:INFO:network packet data saved to 'C:\Users\Abraham Audu\Documents\BizDocs Files\THE THREE\Intrusion Detection System\ids_project\src\app\temp\dos-synflooding-5-dec.pcap':
+2023-06-21 03:26:34,435:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:27:08,025:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:27:08,030:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:27:08,033:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 03:40:40,543:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:40:40,551:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:40:40,553:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 03:40:50,667:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:40:50,784:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:40:50,791:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:40:50,794:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 03:40:53,974:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:40:53,979:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:40:53,982:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 03:40:53,985:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:45:01,896:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:45:01,905:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:45:01,909:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 03:45:04,433:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:45:04,440:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:45:04,443:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 03:45:04,446:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:45:34,850:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:45:34,855:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:45:34,857:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 03:45:36,825:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:45:36,832:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:45:36,835:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 03:45:36,838:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:52:20,635:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:57:19,298:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:57:28,093:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:57:28,098:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:57:28,100:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 03:57:30,066:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:57:30,074:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:57:30,077:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 03:57:30,079:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 03:58:55,946:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:58:55,952:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:58:55,955:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 03:58:58,148:streamlit_app.py:run:INFO:Session started:
+2023-06-21 03:58:58,155:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 03:58:58,158:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 03:58:58,160:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 04:07:54,976:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:07:54,985:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 04:07:54,987:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 04:13:39,464:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:13:39,469:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 04:13:39,471:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 04:13:52,718:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:13:52,823:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:13:52,829:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 04:13:52,831:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 04:15:59,208:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:15:59,216:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 04:15:59,219:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 04:16:05,678:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:16:05,805:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:16:05,810:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 04:16:05,839:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 04:21:25,572:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:21:25,577:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 04:21:25,580:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 04:27:56,012:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:27:56,021:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 04:27:56,024:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 04:28:13,153:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:28:13,160:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 04:28:13,162:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 04:28:13,165:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 04:28:13,169:streamlit_app.py:run:INFO:An error occurred whilst attempting to call API:
+AlertMixin.success() takes 2 positional arguments but 4 were given:
+2023-06-21 04:30:22,623:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:30:22,631:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 04:30:22,635:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 04:30:25,333:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:30:25,340:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 04:30:25,343:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 04:30:25,346:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 04:30:25,350:streamlit_app.py:run:INFO:An error occurred whilst attempting to call API:
+AlertMixin.success() takes 2 positional arguments but 4 were given:
+2023-06-21 04:35:20,931:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:35:20,938:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 04:35:20,941:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 04:35:23,252:streamlit_app.py:run:INFO:Session started:
+2023-06-21 04:35:23,259:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 04:35:23,264:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 04:35:23,266:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 04:35:23,270:streamlit_app.py:run:INFO:An error occurred whilst attempting to call API:
+There is no current event loop in thread 'ScriptRunner.scriptThread'.:
+2023-06-21 05:27:23,649:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:28:45,150:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:29:51,770:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:29:52,061:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 05:29:52,447:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 05:32:45,506:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:32:45,660:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:32:45,667:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 05:32:45,712:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 05:32:52,473:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:33:17,312:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:33:17,318:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 05:33:17,321:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 05:36:05,533:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:45:22,338:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:45:54,476:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:45:54,481:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 05:45:54,524:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 05:50:53,371:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:51:00,171:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:51:00,176:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 05:51:00,178:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 05:51:59,700:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:51:59,704:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 05:51:59,706:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 05:55:22,349:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:55:22,473:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:55:22,480:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 05:55:22,483:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 05:57:07,112:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:57:07,255:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:57:07,264:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 05:57:07,319:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 05:57:18,160:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:57:26,910:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:57:26,917:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 05:57:27,183:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 05:58:34,035:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:58:34,171:streamlit_app.py:run:INFO:Session started:
+2023-06-21 05:58:34,180:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 05:58:34,183:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 16:46:34,401:streamlit_app.py:run:INFO:Session started:
+2023-06-21 16:46:54,541:streamlit_app.py:run:INFO:Session started:
+2023-06-21 16:46:54,549:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 16:46:54,551:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 18:27:01,016:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:27:01,031:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 18:27:01,033:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 18:29:28,584:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:29:28,745:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:29:28,758:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 18:29:28,761:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 18:31:22,487:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:31:22,620:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:31:22,630:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 18:31:22,633:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 18:31:28,191:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:31:39,731:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:31:39,739:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 18:31:39,741:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 18:52:42,622:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:52:42,751:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:52:42,757:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 18:52:42,760:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 18:52:51,064:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:52:51,077:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 18:52:51,080:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 18:54:52,549:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:54:52,557:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 18:54:52,560:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 18:55:00,446:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:55:00,458:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 18:55:00,461:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 18:55:09,445:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:55:09,450:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 18:55:09,452:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 18:55:18,683:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:55:25,825:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:55:25,832:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 18:55:25,834:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 18:57:29,087:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:57:29,239:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:57:29,250:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 18:57:29,254:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 18:57:56,163:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:57:56,173:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 18:57:56,177:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 18:58:03,895:streamlit_app.py:run:INFO:Session started:
+2023-06-21 18:58:03,906:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 18:58:03,911:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:00:19,320:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:00:19,326:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:00:19,329:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:00:23,678:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:00:31,189:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:00:31,196:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:00:31,199:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:04:03,948:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:04:10,042:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:04:10,047:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:04:10,049:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:08:10,181:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:08:10,304:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:08:10,310:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:08:10,313:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:08:49,495:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:08:49,624:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:08:49,630:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:08:49,633:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:09:05,154:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:09:05,293:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:09:05,301:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:09:05,304:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:15:02,285:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:15:07,900:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:15:07,906:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:15:07,908:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:15:24,130:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:15:24,254:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:15:24,262:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:15:24,264:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:15:42,044:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:15:42,058:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:15:42,061:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:21:29,783:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:21:29,944:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:21:29,952:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:21:29,954:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:21:38,730:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:21:38,883:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:21:38,890:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:21:38,896:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:31:04,803:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:31:04,933:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:31:04,940:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:31:04,984:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:31:16,556:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:31:21,673:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:31:21,679:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:31:21,682:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:31:43,028:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:31:43,157:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:31:43,164:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:31:43,166:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:35:44,318:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:35:44,438:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:35:44,444:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:35:44,446:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:35:58,608:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:35:58,737:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:35:58,743:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:35:58,745:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:36:28,167:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:36:34,476:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:36:34,484:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:36:34,486:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:42:11,425:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:42:11,559:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:42:11,566:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:42:11,568:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:42:18,533:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:42:18,725:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:42:18,732:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:42:18,735:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:46:29,099:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:46:29,228:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:46:29,235:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:46:29,237:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:46:37,757:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:46:37,921:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:46:37,928:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:46:37,934:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:46:50,564:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:46:50,683:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:46:50,690:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:46:50,692:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:49:18,554:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:49:18,672:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:49:18,677:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:49:18,736:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:49:28,304:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:49:28,427:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:49:28,433:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:49:28,493:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:57:34,966:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:57:35,100:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:57:35,107:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:57:35,111:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 19:57:51,263:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:57:51,401:streamlit_app.py:run:INFO:Session started:
+2023-06-21 19:57:51,412:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 19:57:51,414:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:01:25,450:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:01:25,616:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:01:25,625:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:01:25,643:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:07:12,537:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:07:12,671:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:07:12,680:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:07:12,683:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:07:34,243:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:07:34,425:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:07:34,437:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:07:34,440:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:10:23,820:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:10:23,967:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:10:23,976:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:10:23,979:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:10:39,295:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:10:39,416:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:10:39,423:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:10:39,425:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:25:05,574:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:25:06,073:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:25:06,199:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:25:06,201:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:33:22,830:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:33:22,949:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:33:22,953:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:33:22,955:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:33:32,857:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:33:32,989:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:33:32,994:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:33:32,997:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:34:10,741:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:34:10,874:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:34:10,879:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:34:10,882:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:36:31,921:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:36:32,072:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:36:32,082:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:36:32,085:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:37:47,301:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:37:47,424:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:37:47,429:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:37:47,431:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:37:53,983:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:37:54,147:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:37:54,159:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:37:54,236:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:46:17,060:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:46:18,133:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:46:18,138:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:46:18,163:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:47:45,602:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:47:49,586:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:47:49,591:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:47:49,593:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:48:21,228:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:48:52,790:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:48:52,866:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:48:52,869:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:51:44,393:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:51:50,408:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:51:50,417:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:51:50,462:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:52:07,235:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:52:07,470:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:52:07,477:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:52:07,520:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:53:13,179:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:53:21,570:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:53:21,577:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:53:21,580:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:54:09,475:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:54:37,367:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:54:37,372:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:54:38,214:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:58:40,403:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:58:43,623:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:58:43,629:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:58:43,741:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:59:02,960:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:59:03,073:streamlit_app.py:run:INFO:Session started:
+2023-06-21 20:59:03,118:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 20:59:03,540:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 20:59:19,556:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:00:26,150:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:00:26,157:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 21:00:26,206:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 21:01:23,178:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:01:54,567:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:01:54,671:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 21:01:54,673:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 21:03:56,784:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:04:00,914:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:04:00,920:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 21:04:00,939:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 21:04:26,153:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:04:26,267:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:04:26,272:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 21:04:26,953:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 21:06:19,986:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:09:41,591:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:09:41,598:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 21:09:42,482:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 21:31:37,465:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:31:44,280:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:31:44,643:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 21:31:44,645:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 21:31:59,607:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:31:59,733:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:31:59,742:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 21:31:59,863:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 21:50:11,220:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:50:35,730:streamlit_app.py:run:INFO:Session started:
+2023-06-21 21:50:35,735:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 21:50:35,738:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 22:53:50,076:streamlit_app.py:run:INFO:Session started:
+2023-06-21 22:55:51,208:streamlit_app.py:run:INFO:Session started:
+2023-06-21 22:56:39,720:streamlit_app.py:run:INFO:Session started:
+2023-06-21 22:56:39,726:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 22:56:39,728:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 22:56:43,406:streamlit_app.py:run:INFO:Session started:
+2023-06-21 22:56:43,415:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 22:56:43,653:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 22:56:43,686:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-21 22:56:48,235:streamlit_app.py:run:INFO:An error occurred whilst attempting to call API:
+'NoneType' object is not iterable:
+2023-06-21 23:15:12,067:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:15:23,474:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:15:23,647:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:16:07,802:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:16:34,370:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:16:34,376:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:16:34,529:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:16:38,123:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:16:38,189:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:16:38,191:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:17:15,817:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:17:15,822:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:17:15,980:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:17:17,306:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:17:17,322:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:17:17,325:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:17:20,420:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:17:21,018:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:17:21,020:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:18:31,425:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:18:31,872:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:18:32,746:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:19:47,219:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:19:47,224:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:19:47,228:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:20:50,003:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:20:50,061:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:20:50,066:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:21:47,265:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:21:50,315:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:21:50,319:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:21:50,322:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:22:07,354:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:22:09,336:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:22:09,338:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:24:44,080:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:24:44,084:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:24:44,087:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:24:51,799:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:24:51,806:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:24:51,808:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:24:51,956:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:24:51,962:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:24:52,451:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:24:52,453:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:24:53,897:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:24:54,202:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:27:20,850:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:27:33,780:streamlit_app.py:post_packets:INFO:Attempting API call:
+2023-06-21 23:27:33,781:streamlit_app.py:post_packets:INFO:Attempting API call:
+2023-06-21 23:27:33,782:streamlit_app.py:post_packets:INFO:Attempting API call:
+2023-06-21 23:27:33,783:streamlit_app.py:post_packets:INFO:Attempting API call:
+2023-06-21 23:27:33,786:streamlit_app.py:post_packets:INFO:Attempting API call:
+2023-06-21 23:27:33,789:streamlit_app.py:post_packets:INFO:Attempting API call:
+2023-06-21 23:34:36,889:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:34:36,894:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:34:36,964:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:34:39,334:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:34:39,341:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:34:39,382:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:37:06,353:streamlit_app.py:post_packets:INFO:Attempting API call:
+2023-06-21 23:37:40,520:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:37:40,526:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:37:40,550:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:37:56,112:streamlit_app.py:post_packets:INFO:Attempting API call:
+2023-06-21 23:42:02,169:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:42:02,182:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:42:02,204:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:42:09,635:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:42:09,698:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:42:09,732:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:42:18,116:streamlit_app.py:post_packets:INFO:Attempting API call:
+2023-06-21 23:51:26,936:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:51:26,943:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:51:31,692:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:51:36,941:streamlit_app.py:post_packets:INFO:Attempting API call:
+2023-06-21 23:52:30,743:streamlit_app.py:run:INFO:Session started:
+2023-06-21 23:52:30,749:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-21 23:52:37,197:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:52:44,236:streamlit_app.py:post_packets:INFO:Attempting API call:
+2023-06-21 23:55:20,563:streamlit_app.py:<module>:INFO:Session started:
+2023-06-21 23:55:20,569:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-21 23:55:20,572:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:55:50,837:streamlit_app.py:<module>:INFO:Session started:
+2023-06-21 23:55:50,842:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-21 23:55:51,257:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-21 23:55:58,756:streamlit_app.py:<module>:INFO:Session started:
+2023-06-21 23:56:00,404:streamlit_app.py:post_packets:INFO:Attempting API call:
+2023-06-22 00:07:32,436:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:07:32,444:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:07:32,446:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:07:49,826:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:07:49,832:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:07:50,707:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:10:04,008:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:10:04,013:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:10:04,016:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:10:45,773:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:10:46,745:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:10:46,750:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:10:46,752:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:10:50,515:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:10:50,521:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:10:50,523:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:11:15,608:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:11:15,608:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:11:15,609:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:17:38,224:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:17:38,233:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:17:53,740:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:18:00,579:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:18:00,587:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:18:00,590:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:18:00,879:streamlit_app.py:<module>:INFO:An error occurred whilst attempting to call API:
+name 'elapsed_time' is not defined:
+2023-06-22 00:19:29,964:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:19:29,972:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:19:29,975:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:19:32,242:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:19:32,250:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:19:32,252:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:19:32,472:streamlit_app.py:<module>:INFO:An error occurred whilst attempting to call API:
+name 'elapsed_time' is not defined:
+2023-06-22 00:20:29,401:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:20:29,408:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:20:29,411:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:20:33,078:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:20:33,083:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:20:33,085:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:20:33,143:streamlit_app.py:<module>:INFO:An error occurred whilst attempting to call API:
+name 'elapsed_time' is not defined:
+2023-06-22 00:21:12,049:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:21:12,054:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:21:12,170:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:21:15,611:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:21:15,731:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:21:15,734:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:21:18,052:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:21:18,099:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:21:18,202:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:21:26,503:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:41,820:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:41,833:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:22:41,835:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:22:47,618:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:47,627:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:22:47,629:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:22:48,115:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:48,126:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:22:48,129:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:22:48,311:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:48,317:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:22:48,321:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:22:48,536:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:48,754:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:49,143:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:49,143:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:49,261:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:49,382:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:49,390:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:22:49,393:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:22:49,522:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:49,658:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:22:49,661:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:22:56,911:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:59,216:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:59,273:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:22:59,926:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:23:03,655:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:23:03,662:streamlit_app.py:<module>:INFO:network packet data uploaded:
+2023-06-22 00:23:03,872:streamlit_app.py:<module>:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:23:04,192:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:23:14,673:streamlit_app.py:<module>:INFO:Session started:
+2023-06-22 00:34:15,467:streamlit_app.py:run:INFO:Session started:
+2023-06-22 00:34:15,476:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 00:34:15,478:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:38:06,281:streamlit_app.py:run:INFO:Session started:
+2023-06-22 00:38:06,287:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 00:38:06,289:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:39:07,263:streamlit_app.py:run:INFO:Session started:
+2023-06-22 00:39:07,270:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 00:39:07,274:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:39:11,321:streamlit_app.py:run:INFO:Session started:
+2023-06-22 00:39:11,325:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 00:39:11,327:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:39:11,330:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 00:39:20,362:streamlit_app.py:run:INFO:An error occurred whilst attempting to call API:
+Object of type Series is not JSON serializable:
+2023-06-22 00:51:10,727:streamlit_app.py:run:INFO:Session started:
+2023-06-22 00:51:10,734:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 00:51:10,736:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 00:51:24,438:streamlit_app.py:run:INFO:Session started:
+2023-06-22 00:51:24,444:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 00:51:24,446:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 01:04:22,042:streamlit_app.py:run:INFO:Session started:
+2023-06-22 01:04:22,052:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 01:04:27,236:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 01:04:27,242:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 01:04:28,670:streamlit_app.py:run:INFO:An error occurred whilst attempting to call API:
+Out of range float values are not JSON compliant:
+2023-06-22 01:17:29,297:streamlit_app.py:run:INFO:Session started:
+2023-06-22 01:17:29,313:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 01:17:29,315:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 01:17:50,320:streamlit_app.py:run:INFO:Session started:
+2023-06-22 01:17:50,327:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 01:17:50,330:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 01:17:54,789:streamlit_app.py:run:INFO:Session started:
+2023-06-22 01:17:54,797:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 01:18:01,995:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 01:20:29,688:streamlit_app.py:run:INFO:Session started:
+2023-06-22 01:21:20,386:streamlit_app.py:run:INFO:Session started:
+2023-06-22 01:21:20,465:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 01:21:20,470:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 01:21:28,635:streamlit_app.py:run:INFO:Session started:
+2023-06-22 01:21:28,646:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 01:21:28,649:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 01:42:39,725:streamlit_app.py:run:INFO:Session started:
+2023-06-22 01:42:39,732:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 01:42:39,734:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 01:46:05,752:streamlit_app.py:run:INFO:Session started:
+2023-06-22 01:47:01,510:streamlit_app.py:run:INFO:Session started:
+2023-06-22 01:47:01,516:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 01:47:01,521:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 01:47:04,715:streamlit_app.py:run:INFO:Session started:
+2023-06-22 01:47:04,721:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 01:47:04,724:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 01:49:21,385:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:16:21,269:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:19:42,080:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:19:55,105:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:19:55,114:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 02:19:55,117:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 02:19:58,137:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:19:58,146:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 02:19:58,150:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 02:19:58,193:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 02:20:09,567:streamlit_app.py:run:INFO:An error occurred whilst attempting to call API:
+'result':
+2023-06-22 02:25:01,400:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:25:01,406:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 02:25:01,408:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 02:25:01,413:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 02:25:07,282:streamlit_app.py:run:INFO:An error occurred whilst attempting to call API:
+AlertMixin.info() takes 2 positional arguments but 4 were given:
+2023-06-22 02:29:16,352:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:29:16,362:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 02:29:16,366:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 02:29:16,370:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 02:29:18,332:streamlit_app.py:run:INFO:An error occurred whilst attempting to call API:
+AlertMixin.info() takes 2 positional arguments but 4 were given:
+2023-06-22 02:31:50,222:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:31:50,229:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 02:31:50,232:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 02:31:50,236:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 02:31:51,764:streamlit_app.py:run:INFO:An error occurred whilst attempting to call API:
+AlertMixin.info() takes 2 positional arguments but 4 were given:
+2023-06-22 02:31:58,653:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:31:58,692:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 02:31:58,695:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 02:31:58,700:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 02:32:00,480:streamlit_app.py:run:INFO:An error occurred whilst attempting to call API:
+AlertMixin.info() takes 2 positional arguments but 4 were given:
+2023-06-22 02:37:02,472:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:37:02,479:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 02:37:02,483:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 02:37:04,759:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:37:04,769:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 02:37:04,773:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 02:37:04,779:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 02:42:18,555:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:42:18,564:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 02:42:18,567:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 02:42:18,570:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 02:44:46,830:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:44:46,841:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 02:44:46,894:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 02:44:46,898:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 02:45:13,984:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:45:13,992:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 02:45:14,414:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 02:45:14,423:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 02:47:22,095:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:55:40,716:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:56:47,812:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:56:47,821:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 02:56:47,825:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 02:56:52,408:streamlit_app.py:run:INFO:Session started:
+2023-06-22 02:56:52,416:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 02:56:52,419:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 02:56:52,427:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 03:01:41,831:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:01:52,303:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:01:52,311:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 03:01:52,314:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 03:02:05,151:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:02:05,160:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 03:02:05,164:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 03:02:05,167:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 03:26:29,784:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:26:39,175:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 03:26:39,205:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 03:27:32,191:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:27:32,199:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 03:27:32,203:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 03:27:41,823:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:27:41,832:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 03:27:41,835:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 03:27:41,840:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 03:27:49,567:streamlit_app.py:run:INFO:An error occurred whilst attempting to call API:
+module 'streamlit' has no attribute 'beta_container':
+2023-06-22 03:37:57,134:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:37:57,431:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 03:37:57,435:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 03:38:01,112:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:38:01,120:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 03:38:01,122:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 03:38:01,128:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 03:42:37,379:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:42:37,387:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 03:42:37,390:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 03:42:37,394:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 03:42:46,931:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:42:47,109:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 03:42:47,146:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 03:42:47,149:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 03:43:57,919:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:54:47,789:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:55:22,245:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:55:22,256:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 03:55:22,260:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 03:55:25,750:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:55:25,762:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 03:55:25,764:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 03:55:25,768:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 03:58:24,820:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:58:24,828:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 03:58:24,831:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 03:58:24,834:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 03:58:32,830:streamlit_app.py:run:INFO:Session started:
+2023-06-22 03:58:32,841:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 03:58:32,844:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 03:58:32,847:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 04:05:51,830:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:05:51,838:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 04:05:51,841:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 04:05:51,845:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 04:11:51,587:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:11:51,595:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 04:11:51,598:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 04:11:51,601:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 04:21:39,780:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:21:39,786:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 04:21:39,791:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 04:21:39,794:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 04:22:21,869:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:23:09,454:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:23:09,464:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 04:23:09,467:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 04:23:12,026:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:23:12,039:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 04:23:12,043:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 04:23:12,047:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 04:32:19,340:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:32:19,349:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 04:32:19,352:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 04:32:19,358:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 04:34:39,231:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:34:39,293:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 04:34:39,295:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 04:34:39,298:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 04:38:53,793:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:38:53,803:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 04:38:53,806:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 04:38:53,809:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 04:40:02,059:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:40:02,068:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 04:40:02,897:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 04:40:02,905:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 04:40:41,531:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:41:27,620:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:41:27,629:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 04:41:27,692:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 04:41:31,105:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:41:31,112:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 04:41:31,116:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 04:41:31,120:streamlit_app.py:run:INFO:Attempting API call:
+2023-06-22 04:42:54,180:streamlit_app.py:run:INFO:Session started:
+2023-06-22 04:42:54,188:streamlit_app.py:run:INFO:network packet data uploaded:
+2023-06-22 04:42:54,255:streamlit_app.py:run:INFO:network packet data saved to 'dos-synflooding-5-dec.pcap':
+2023-06-22 04:42:54,259:streamlit_app.py:run:INFO:Attempting API call:

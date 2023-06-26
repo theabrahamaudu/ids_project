@@ -45,15 +45,19 @@ xgb_model = xgb.train(xgb_params, dtrain)
 xgb_train_time = time.process_time() - st
 
 # Save model
-joblib.dump(xgb_model, MODELS_DIR+'xgb_model.joblib')
+xgb_model.save_model(MODELS_DIR+'xgb_model.bin')
 
 
 ## ------------- Evaluate the model ----------------- ##
 
+# Load model
+loaded_model = xgb.Booster()
+loaded_model.load_model(MODELS_DIR+'xgb_model.bin')
+
 # XGB Predictions
 st = time.process_time()
 dtest = xgb.DMatrix(X_test_scaled)
-xgb_preds = xgb_model.predict(dtest)
+xgb_preds = loaded_model.predict(dtest)
 xgb_inf_time = time.process_time() - st
 
 

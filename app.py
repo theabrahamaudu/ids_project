@@ -8,12 +8,13 @@ import asyncio
 import concurrent.futures
 from multiprocessing import Process
 import joblib
-from fastapi import FastAPI, Request, File, UploadFile
+import zipfile
+from fastapi import FastAPI, Request, File, UploadFile, Response
 import uvicorn
 import pandas as pd
 import numpy as np
 from pydantic import BaseModel
-from xgboost import DMatrix
+import xgboost as xgb
 import pyshark
 from src.features.build_features import preprocess
 from src.data.packet_streamer import pcap_stream
@@ -36,8 +37,9 @@ app.mount("/static", StaticFiles(directory="./static"), name="static")
 templates = Jinja2Templates(directory="./templates")
 
 # Load model
-MODEL_DIR = './models/xgb_model.joblib'
-model = joblib.load(MODEL_DIR)
+MODELS_DIR = './models/'
+model = xgb.Booster()
+model.load_model(MODELS_DIR+'xgb_model.bin')
 
 
 # Data Validation
@@ -71,7 +73,28 @@ async def upload_file(request: Request, file: UploadFile = File(None)):
         if filename:
             # File was selected and submit button was clicked, save the file
             main_directory = os.path.dirname(os.path.abspath(__file__))
-            file_path = os.path.join(main_directory, "temp", filename)
+            directory_path = os.path.join(main_directory, "temp")
+
+            # Clear all files in temp dir
+            # Get the list of files in the directory
+            file_list = os.listdir(directory_path)
+
+            # Iterate over the files and delete them
+            for file_name in file_list:
+                if ".gitignore" not in file_name:
+                    file_path = os.path.join(directory_path, file_name)
+                    if os.path.isfile(file_path):
+                        os.remove(file_path)
+                        logger.info(f"Deleted file: {file_path}")
+
+            # Define new file file path
+            file_path = os.path.join(directory_path, filename)
+
+            # Create the directory if it does not exist
+            if not os.path.exists(directory_path):
+                os.makedirs(directory_path)
+
+            # Write the pcap file
             with open(file_path, "wb") as f:
                 contents = await file.read()
                 f.write(contents)
@@ -81,19 +104,34 @@ async def upload_file(request: Request, file: UploadFile = File(None)):
         logger.warning(f"File upload failed: {e}")
         success_message = f"File upload failed: {e}"
 
-    return templates.TemplateResponse("home.html", {"request": request, "filename": filename, "success_message": success_message})
+    return {"filename": file_path, "success_message": success_message}
 
 # File processing endpoint
-
 def process_pcap(filename):
     print('running data parse')
     temp_df = pd.DataFrame()
     print('dataframe created')
-    for i in pcap_stream(filename):
+
+    # Get temp dir
+    main_directory = os.path.dirname(os.path.abspath(__file__))
+    directory_path = os.path.join(main_directory, "temp")
+
+    # Define new file file path
+    file_path = os.path.join(directory_path, filename)
+
+    for i in pcap_stream(file_path):
         temp_df = pd.concat([temp_df, i], axis=0)
     print('\nPreprocessing data')
+
+    # Define unprocessed csv file file path
+    unprocessed_csv_file_path = os.path.join(directory_path, str(filename[:-5]+'unprocessed.csv'))
+    temp_df.to_csv(unprocessed_csv_file_path, index=False, header=True, mode='w')
+
     temp_df = preprocess(temp_df, train=False)
-    np.savetxt(str(filename[:-5]+'.csv'), temp_df, delimiter=',')
+
+    # Define new csv file file path
+    csv_file_path = os.path.join(directory_path, str(filename[:-5]+'.csv'))
+    np.savetxt(csv_file_path, temp_df, delimiter=',')
     print('process complete')
 
 @app.post("/process")
@@ -107,8 +145,44 @@ def process_file(data: dict):
     except Exception as e:
         logger.error(f"Processing failed: {e}")
         return {'response': f"Processing failed: \n{e}"}
-    
-    
+
+# Processed file retrieval endpoint
+@app.post("/retrieve")
+def download_csv(data: dict):
+    filename = data['filename']
+    # Get temp dir
+    main_directory = os.path.dirname(os.path.abspath(__file__))
+    directory_path = os.path.join(main_directory, "temp")
+
+    # Define new file file path
+    csv_file_path = os.path.join(directory_path, str(filename[:-5]+'.csv'))
+    unprocessed_csv_file_path = os.path.join(directory_path, str(filename[:-5]+'unprocessed.csv'))
+
+    file_paths = [csv_file_path, unprocessed_csv_file_path]
+
+    if file_paths:
+        try:
+            # Create a zip archive containing the files
+            zip_file_path = os.path.join(directory_path, str('files.zip'))
+            with zipfile.ZipFile(zip_file_path, 'w') as zip_file:
+                for file_path in file_paths:
+                    zip_file.write(file_path)
+
+            # Set the appropriate HTTP response headers
+            
+            with open(zip_file_path, 'rb') as zip_file:
+                content = zip_file.read()
+
+            response = Response(content=content, media_type='application/zip')
+            response.headers['Content-Disposition'] = 'attachment; filename="files.zip"'
+
+            return response
+
+        except Exception as e:
+            return {"response": f"Error: {e}"}
+
+    return {"response": "Error: File path not provided."}
+
 # Prediction endpoint
 @app.post("/predict")
 def predict(packet: dict):
@@ -127,7 +201,7 @@ def predict(packet: dict):
     try:
         packet = packet["data"]
         packet = pd.DataFrame([packet])
-        data_point = DMatrix(packet)
+        data_point = xgb.DMatrix(packet)
     except Exception as exc:
         logger.exception(f"Error preprocessing data:\n{exc}")
 

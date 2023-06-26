@@ -21,5 +21,6 @@ pyshark
 fastapi
 uvicorn
 pypcapkit
-tensorflow==2.10
+# tensorflow==2.10
 dvc
+python-multipart
