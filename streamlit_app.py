@@ -69,7 +69,7 @@ def run():
         st.session_state['filename'] = file.name
         if st.button("Upload"):
             with st.spinner("Uploading file..."):
-                up_status = requests.post(server+"/upload", files={"file":file}, verify="certificate.crt")
+                up_status = requests.post(server+"/upload", files={"file":file}, verify=False)
                 if up_status.status_code == 200:
                     up_status = up_status.json()
                     st.session_state['filename'] = up_status['filename']
@@ -80,7 +80,7 @@ def run():
         
         if st.button("Process data"):
             with st.spinner("Processing file..."):
-                state = requests.post(server+"/process", json={"filename":st.session_state['filename']}, verify="certificate.crt").json()
+                state = requests.post(server+"/process", json={"filename":st.session_state['filename']}, verify=False).json()
                 if "complete" in str(state['response']):
                     st.info(state['response'])
                 else:
@@ -91,7 +91,7 @@ def run():
                 with st.spinner("Retrieving processed file..."):
                     # Make a POST request to the endpoint and provide the file path
                     filename = {'filename': st.session_state['filename']}
-                    processed_file = requests.post(server+"/retrieve", json=filename, verify="certificate.crt")
+                    processed_file = requests.post(server+"/retrieve", json=filename, verify=False)
 
                     # Check if the request was successful (status code 200)
                     if processed_file.status_code == 200:
@@ -139,7 +139,7 @@ def run():
                         packet = OrderedDict(enumerate(packet))
 
                         
-                        response = session.post(server+"/predict", json={"data":packet}, verify="certificate.crt").json()
+                        response = session.post(server+"/predict", json={"data":packet}, verify=False).json()
                         # time.sleep(0.3)
                         prediction = response["result"]
                         pred_time = response["time"]
