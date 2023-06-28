@@ -60,7 +60,7 @@ def test_page():
     Test endpoint which can be used to test the availability of the application.
     """
     logger.info("API service tested")
-    return {'message': 'System is healthy'}
+    return {"message": "System is healthy"}
 
 # Home page
 @app.get('/', response_class=HTMLResponse)
@@ -111,23 +111,28 @@ async def upload_file(file: UploadFile = File(...)):
 
 # File processing endpoint
 def process_pcap(filename):
-    print('running data parse')
+    print("running data parse")
+    logger.info("Parsing network data from pcap file")
+    try:
+        # Get temp dir
+        main_directory = os.getcwd()
+        directory_path = os.path.join(main_directory, "temp")
 
-    # Get temp dir
-    main_directory = os.getcwd()
-    directory_path = os.path.join(main_directory, "temp")
+        # Define new file file path
+        file_path = os.path.join(directory_path, filename)
 
-    # Define new file file path
-    file_path = os.path.join(directory_path, filename)
+        temp_df = pd.DataFrame()
+        for i in pcap_stream(file_path):
+            temp_df = pd.concat([temp_df, i], axis=0)
 
-    temp_df = pd.DataFrame()
-    for i in pcap_stream(file_path):
-        temp_df = pd.concat([temp_df, i], axis=0)
-
-    # Define unprocessed csv file file path
-    unprocessed_csv_file_path = os.path.join(directory_path, str(filename[:-5]+'unprocessed.csv'))
-    temp_df.to_csv(unprocessed_csv_file_path, index=False, header=True, mode='w')
-    print('process complete')
+        # Define unprocessed csv file file path
+        unprocessed_csv_file_path = os.path.join(directory_path, str(filename[:-5]+'unprocessed.csv'))
+        temp_df.to_csv(unprocessed_csv_file_path, index=False, header=True, mode='w')
+        print("process complete")
+        logger.info("Parsing completed")
+    except Exception as e:
+        logger.warning("Parsing failed: {e}")
+        print("Process failed: {e}")
 
 @app.post("/process")
 def process_file(data: dict):
@@ -136,10 +141,10 @@ def process_file(data: dict):
         p = Process(target=process_pcap, args=(filename,))
         p.start()
         p.join()
-        return {'response': "Processing complete!"}
+        return {"response": "Processing complete!"}
     except Exception as e:
         logger.error(f"Processing failed: {e}")
-        return {'response': f"Processing failed: \n{e}"}
+        return {"response": f"Processing failed: \n{e}"}
 
 # Processed file retrieval endpoint
 @app.post("/retrieve")
