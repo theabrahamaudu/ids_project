@@ -76,7 +76,7 @@ async def upload_file(request: Request, file: UploadFile = File(None)):
     try:
         if filename:
             # File was selected and submit button was clicked, save the file
-            main_directory = os.path.dirname(os.path.abspath(__file__))
+            main_directory = os.getcwd()
             directory_path = os.path.join(main_directory, "temp")
 
             # Clear all files in temp dir
@@ -115,7 +115,7 @@ def process_pcap(filename):
     print('running data parse')
 
     # Get temp dir
-    main_directory = os.path.dirname(os.path.abspath(__file__))
+    main_directory = os.getcwd()
     directory_path = os.path.join(main_directory, "temp")
 
     # Define new file file path
@@ -147,7 +147,7 @@ def process_file(data: dict):
 def download_csv(data: dict):
     filename = data['filename']
     # Get temp dir
-    main_directory = os.path.dirname(os.path.abspath(__file__))
+    main_directory = os.getcwd()
     directory_path = os.path.join(main_directory, "temp")
 
     # Define new file file path
