@@ -69,9 +69,8 @@ async def home_page(request: Request):
 
 # File upload endpoint
 @app.post("/upload")
-async def upload_file(request: Request, file: UploadFile = File(None)):
-    filename = file.filename if file else "No file chosen"
-    success_message = ""
+async def upload_file(file: UploadFile = File(...)):
+    filename = file.filename
 
     try:
         if filename:
