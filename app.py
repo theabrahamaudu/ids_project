@@ -107,7 +107,7 @@ async def upload_file(file: UploadFile = File(...)):
         logger.warning(f"File upload failed: {e}")
         success_message = f"File upload failed: {e}"
 
-    return {"filename": file_path, "success_message": success_message}
+    return JSONResponse(content={"filename": file_path, "success_message": success_message})
 
 # File processing endpoint
 def process_pcap(filename):
@@ -141,10 +141,10 @@ def process_file(data: dict):
         p = Process(target=process_pcap, args=(filename,))
         p.start()
         p.join()
-        return {"response": "Processing complete!"}
+        return JSONResponse(content={"response": "Processing complete!"})
     except Exception as e:
         logger.error(f"Processing failed: {e}")
-        return {"response": f"Processing failed: \n{e}"}
+        return JSONResponse(content={"response": f"Processing failed: \n{e}"})
 
 # Processed file retrieval endpoint
 @app.post("/retrieve")
@@ -201,9 +201,9 @@ def download_csv(data: dict):
             return response
 
         except Exception as e:
-            return {"response": f"Error: {e}"}
+            return JSONResponse(content={"response": f"Error: {e}"})
 
-    return {"response": "Error: File path not provided."}
+    return JSONResponse(content={"response": "Error: File path not provided."})
 
 # Prediction endpoint
 @app.post("/predict")
@@ -234,7 +234,7 @@ def predict(packet: dict):
         result = model.predict(packet)
         result = result.item()
         elapsed_time = time.perf_counter()-start_time
-        outcome = {"result": result, "time": elapsed_time}
+        outcome = JSONResponse(content={"result": result, "time": elapsed_time})
 
         logger.info(f"sending result '{result}'  to frontend")
     except Exception as exc:

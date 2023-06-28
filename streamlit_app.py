@@ -81,7 +81,7 @@ def run():
         if st.button("Process data"):
             with st.spinner("Processing file..."):
                 state = requests.post(server+"/process", json={"filename":st.session_state['filename']}, verify=False).json()
-                if "complete" in str(state['response']):
+                if "complete" in str(state["response"]):
                     st.info(state['response'])
                 else:
                     st.warning(state['response'])
