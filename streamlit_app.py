@@ -69,7 +69,7 @@ def run():
         st.session_state['filename'] = file.name
         if st.button("Upload"):
             with st.spinner("Uploading file..."):
-                up_status = requests.post(server+"/upload", files={"file":file}, verify=False)
+                up_status = requests.post(server+"/upload", files={"file": (file.name, file.file, file.content_type)}, verify=False)
                 if up_status.status_code == 200:
                     up_status = up_status.json()
                     st.session_state['filename'] = up_status['filename']
