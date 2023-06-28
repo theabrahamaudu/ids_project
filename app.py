@@ -16,7 +16,7 @@ import numpy as np
 from pydantic import BaseModel
 import xgboost as xgb
 import pyshark
-from src.features.build_features import preprocess
+from src.features.build_features import convert_to_float
 from src.data.packet_streamer import pcap_stream
 from src.utils.backend_log_config import backend as logger
 # Frontend
@@ -40,6 +40,10 @@ templates = Jinja2Templates(directory="./templates")
 MODELS_DIR = './models/'
 model = xgb.Booster()
 model.load_model(MODELS_DIR+'xgb_model.bin')
+
+# models_dir = './notebooks/'
+# model = xgb.XGBClassifier()
+# model.load_model(models_dir+'xgb_model.bin')
 
 
 # Data Validation
@@ -109,8 +113,6 @@ async def upload_file(request: Request, file: UploadFile = File(None)):
 # File processing endpoint
 def process_pcap(filename):
     print('running data parse')
-    temp_df = pd.DataFrame()
-    print('dataframe created')
 
     # Get temp dir
     main_directory = os.path.dirname(os.path.abspath(__file__))
@@ -119,19 +121,13 @@ def process_pcap(filename):
     # Define new file file path
     file_path = os.path.join(directory_path, filename)
 
+    temp_df = pd.DataFrame()
     for i in pcap_stream(file_path):
         temp_df = pd.concat([temp_df, i], axis=0)
-    print('\nPreprocessing data')
 
     # Define unprocessed csv file file path
     unprocessed_csv_file_path = os.path.join(directory_path, str(filename[:-5]+'unprocessed.csv'))
     temp_df.to_csv(unprocessed_csv_file_path, index=False, header=True, mode='w')
-
-    temp_df = preprocess(temp_df, train=False)
-
-    # Define new csv file file path
-    csv_file_path = os.path.join(directory_path, str(filename[:-5]+'.csv'))
-    np.savetxt(csv_file_path, temp_df, delimiter=',')
     print('process complete')
 
 @app.post("/process")
@@ -157,6 +153,28 @@ def download_csv(data: dict):
     # Define new file file path
     csv_file_path = os.path.join(directory_path, str(filename[:-5]+'.csv'))
     unprocessed_csv_file_path = os.path.join(directory_path, str(filename[:-5]+'unprocessed.csv'))
+
+
+    temp_df = pd.read_csv(unprocessed_csv_file_path)
+
+    scaler = joblib.load('./src/features/scaler.pkl')
+    optimal_features =[
+            'timestamp', 'ip_len', 'ip_id', 'ip_flags', 'ip_ttl', 'ip_proto',
+            'ip_checksum', 'ip_dst', 'ip_dst_host','tcp_srcport', 'tcp_dstport',
+            'tcp_port', 'tcp_stream', 'tcp_completeness', 'tcp_seq_raw', 'tcp_ack',
+            'tcp_ack_raw', 'tcp_flags_reset', 'tcp_flags_syn', 'tcp_window_size_value',
+            'tcp_window_size', 'tcp_window_size_scalefactor', 'tcp_', 'udp_srcport',
+            'udp_dstport', 'udp_port', 'udp_length', 'udp_time_delta', 'eth_dst_oui',
+            'eth_addr_oui', 'eth_dst_lg', 'eth_lg', 'eth_ig', 'eth_src_oui', 'eth_type',
+            'icmp_type', 'icmp_code', 'icmp_checksum', 'icmp_checksum_status', 'arp_opcode'
+            ]
+    data_optimal_features = temp_df[optimal_features]
+    data_floats = convert_to_float(data_optimal_features)
+    data_scaled = scaler.transform(data_floats)
+
+    # Save processed NDArray to csv file file path
+    np.savetxt(csv_file_path, data_scaled, delimiter=',')
+
 
     file_paths = [csv_file_path, unprocessed_csv_file_path]
 
@@ -200,22 +218,24 @@ def predict(packet: dict):
 
     try:
         packet = packet["data"]
-        packet = pd.DataFrame([packet])
-        data_point = xgb.DMatrix(packet)
+        packet = np.array(list(packet.values())).reshape(1, 40)
+        packet = xgb.DMatrix(packet)
+
     except Exception as exc:
         logger.exception(f"Error preprocessing data:\n{exc}")
 
     logger.info("generating prediction")
     try:
         start_time = time.perf_counter()
-        result: float = float(model.predict(data_point))
+        result = model.predict(packet)
+        result = result.item()
         elapsed_time = time.perf_counter()-start_time
-        packet = {"result": result, "time": elapsed_time}
+        outcome = {"result": result, "time": elapsed_time}
 
         logger.info(f"sending result '{result}'  to frontend")
     except Exception as exc:
         logger.exception(f"Error generating prediction:\n{exc}")
-    return packet
+    return outcome
 
 
 if __name__ == '__main__':

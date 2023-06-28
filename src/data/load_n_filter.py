@@ -220,6 +220,11 @@ if __name__ == '__main__':
 
     # Call the function to scan the directory and get the list of .pcap files
     pcap_files_list = scan_directory(directory_path, ".pcap")
+
+    # Remove noted bad files
+    pcap_files_list.remove('dos-synflooding-6-dec.pcap')
+    pcap_files_list.remove('mirai-hostbruteforce-3-dec.pcap')
+
     print(pcap_files_list)
 
     # the_list = ['dos-synflooding-4-dec.pcap', 'mirai-udpflooding-3-dec.pcap', 'scan-portos-4-dec.pcap',

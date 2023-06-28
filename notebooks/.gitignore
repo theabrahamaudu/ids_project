@@ -4,6 +4,7 @@
 /y_test.csv
 /y_train.csv
 /model.joblib
+/*.csv
 
 # models
 /bilstm_cnn_model.h5

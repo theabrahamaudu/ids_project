@@ -14,6 +14,8 @@ import numpy as np
 import streamlit as st
 from io import StringIO, BytesIO
 import zipfile
+from collections import OrderedDict
+
 
 import requests
 
@@ -30,11 +32,11 @@ reversed_label = {value: key for key, value in label_mapping.items()}
 temp_folder = os.path.join(os.path.dirname(__file__), "temp")
 os.makedirs(temp_folder, exist_ok=True)
 
-# server: str = 'https://54.227.227.65' # Deployment
-server: str = 'http://127.0.0.1:8000' # Local
+server: str = 'https://54.227.227.65' # Deployment
+# server: str = 'http://127.0.0.1:8000' # Local
 
 
-@st.cache_data
+
 def convert_df(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return df.to_csv().encode('utf-8')
@@ -131,14 +133,14 @@ def run():
                 progress_bar = st.progress(0.0, text="Analysing packets...")
                 start_time = time.perf_counter()
                 with st.empty():
-                    for packet, row in zip(packets_arr.tolist(), range(len(packets_df))):
+                    for packet_row, row in zip(range(len(packets_arr)), range(len(packets_df))):
                         
-                        
-                        packet = dict(zip(range(len(packet)), packet))
+                        packet = packets_arr[packet_row]
+                        packet = OrderedDict(enumerate(packet))
 
                         
                         response = session.post(server+"/predict", json={"data":packet}).json()
-
+                        # time.sleep(0.3)
                         prediction = response["result"]
                         pred_time = response["time"]
 
@@ -172,10 +174,16 @@ def run():
 
                 elapsed_time = time.perf_counter() - start_time
 
+                attacks = []
+                for i,j in zip(display_data['Attack Type'].unique(),
+                          display_data['Attack Type'].value_counts(sort=False)):
+                    attacks.append(f"{i}: {j}")
+
                 st.success(f"All packets scanned successfully! 🚀")
                 st.success(f"Total Packets: {TOTAL}")
                 st.success(f"Normal Packets ✔: {NORMAL}")
                 st.success(f"Attack Packets ⚠: {ATTACK}")
+                st.success(f"Attack Types: {attacks}")
                 st.success(f"Avg. prediction time (server side) 🧠: {(TOTAL_PRED_TIME/TOTAL):.10f}s\n")
                 st.success(f"Overall run time ⌚: {elapsed_time:.3f}s")
 
