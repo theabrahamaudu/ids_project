@@ -107,7 +107,7 @@ Steps:
 - Install tshark: ```sudo apt install tshark```
 
 #### Streamlit App
-- Create a <a href="streamlit.io">streamlit.io</a> account using your github account.
+- Create a <a href="https://streamlit.io/">streamlit.io</a> account using your github account.
 - Create a streamlit app using the new repo you created for this app.
 - Use `streamlit_app.py` as the main app.
 - Click `Advanced...` and set python version to `Python 3.10` before firing it up.
