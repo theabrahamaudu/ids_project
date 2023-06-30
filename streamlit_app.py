@@ -1,15 +1,18 @@
 """
-This module houses the Streamlit frontend for the app.
+Streamlit frontend for the IDS app.
 
-It allows the user to upload sample credit card data as .csv file and choose which prediction model to use
-from a range of pretrained models.
+Allows the user to upload PCAP or PCAPNG file to server and toggle data processing 
+on server side, as well as streaming the processed file retrived from the server to the 
+prediction endpoint to infer the class of each network packet.
 
-The result is presented as percentage probability to default on credit card payment
+The result is appended to an interactive DataFrame and at the end of the process, a comprehensive
+report is generated, as well as the option to download the flagged packets as CSV.
 """
 
 import os
 import time
 import pandas as pd
+from pandas import DataFrame
 import numpy as np
 import streamlit as st
 from io import StringIO, BytesIO
@@ -37,19 +40,26 @@ server: str = 'https://54.227.227.65' # Deployment
 
 
 
-def convert_df(df):
-    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+def convert_df(df: DataFrame):
+    """Converts `DataFrame` to `CSV` file
+
+    Args:
+        df (DataFrame): DataFrame to be converted
+
+    Returns:
+        CSV File: 
+    """    
     return df.to_csv().encode('utf-8')
 
 def run():
     """
-    Streamlit configuration for Credit Card Default Prediction web user interface
+    Streamlit configuration for Cloud Based IoT ISD web user interface
 
-    - Allows user to upload sample credit card data
-    - Allows user to select prediction model to be used
-    - Sends request to backend API for prediction and then displays result
+    - Allows user to upload network packet data to server
+    - Allows user to toggle file processing on server
+    - Streams requests to backend API for prediction and then displays results
     """
-    # logger.info("Session started")
+
     st.set_page_config(page_title="IDS for IoT Systems",
                         page_icon="🔐")
     st.image("https://www.n-able.com/wp-content/uploads/2021/03/blog-ids_IPS_main.jpeg")
@@ -57,19 +67,26 @@ def run():
     st.subheader("Built with XGBoost ML Model\n")
 
     st.sidebar.text("Steps:\n"
-                    "1. Upload packet data\n"
-                    "2. Initialize IDS\n"
-                    "3. Get packet flags")
-    with st.spinner("Adding file to queue"):
+                    "1. Choose packet data file\n"
+                    "2. Upload file"
+                    "3. Process file"
+                    "4. Initialize IDS\n"
+                    "5. Download flagged packets for further analysis")
+    
+    with st.spinner("Adding file to queue..."):
         file = st.file_uploader("Choose network packet data (PCAP)", type=['pcap', 'pcapng'])
 
 
     if file is not None:
         # Create a session state object
         st.session_state['filename'] = file.name
+
+        # File upload
         if st.button("Upload"):
+            # Send file upload request
             with st.spinner("Uploading file..."):
                 up_status = requests.post(server+"/upload", files={"file": file}, verify=False)
+                # Parse request response
                 if up_status.status_code == 200:
                     up_status = up_status.json()
                     st.session_state['filename'] = up_status['filename']
@@ -77,17 +94,22 @@ def run():
                 else:
                     st.error("File upload failed.")
 
-        
+        # File Processing
         if st.button("Process data"):
+            # Send request to process uploaded file
             with st.spinner("Processing file..."):
                 state = requests.post(server+"/process", json={"filename":st.session_state['filename']}, verify=False).json()
+                # Parse request response
                 if "complete" in str(state["response"]):
                     st.info(state['response'])
                 else:
                     st.warning(state['response'])
+        
+        # Generate Predictions
         if st.button("Activate IDS"):
             try:
                 st.info("Calling API engine")
+                # Donload Processed file from server
                 with st.spinner("Retrieving processed file..."):
                     # Make a POST request to the endpoint and provide the file path
                     filename = {'filename': st.session_state['filename']}
@@ -105,7 +127,7 @@ def run():
                             st.info("Processed packets retrived")
 
                                 
-                
+                # Initialize streaming process parameters and parse downloaded data
                 # Initialize counters
                 TOTAL = 0
                 NORMAL = 0
@@ -119,28 +141,36 @@ def run():
                 csv_files = [filename for filename in zip_file.namelist() if filename.endswith('.csv')]
 
                 if len(csv_files) >= 2:
-                    # Read the first CSV file into a DataFrame
+                    # Read the first CSV file into a DataFrame (unprocessed data)
                     csv_data1 = zip_file.read(csv_files[1])
                     packets_df = pd.read_csv(BytesIO(csv_data1))
 
-                    # Read the second CSV file into a NumPy array
+                    # Read the second CSV file into a NumPy array (processed data)
                     csv_data2 = zip_file.read(csv_files[0])
                     packets_arr = np.genfromtxt(BytesIO(csv_data2), delimiter=',')
 
                 st.info('Initializing streaming process')
-
+                # Create request session for sending multiple requests to server 
                 session = requests.session()
+
+                # Initialize streaming progress bar
                 progress_bar = st.progress(0.0, text="Analysing packets...")
+
+                # Start streaming timer
                 start_time = time.perf_counter()
+
+                # Stream requests for inferences
                 with st.empty():
+                    # Loop through both datasets and make requests
                     for packet_row, row in zip(range(len(packets_arr)), range(len(packets_df))):
                         
+                        # Convert ndarry of packet to ordered dictionary
                         packet = packets_arr[packet_row]
                         packet = OrderedDict(enumerate(packet))
-
                         
+                        # Send disctionary with request to prediction endpoint
                         response = session.post(server+"/predict", json={"data":packet}, verify=False).json()
-                        # time.sleep(0.3)
+                        # Parse response
                         prediction = response["result"]
                         pred_time = response["time"]
 
@@ -149,36 +179,48 @@ def run():
 
                         # Increment total counter
                         TOTAL+=1
-
+                        # Increement progress bar
                         progress_bar.progress(float(TOTAL/len(packets_df)), text="Analysing packets...")
 
                         if prediction==0.0:
-                            # st.info({'packet_type': reversed_label[int(0.0)]})
                             # Increment normal count
                             NORMAL+=1
                         
                         else:
-                            
+                            # Convert numerical class of response to string equivalent and append
+                            # unprocessed version of attack packet to `display_data` dataframe
+
+                            # make copy of attack packet
                             packet_data = packets_df.loc[[row]].copy()
+
+                            # get string eqivalent of attack class
                             label_data = pd.DataFrame([{'Attack Type': reversed_label[int(prediction)]}])
+
+                            # add label and attack packet to a single row of data
                             label_data.reset_index(drop=True, inplace=True)
                             packet_data.reset_index(drop=True, inplace=True)
                             attack_data = pd.concat([label_data, packet_data], axis=1)
+
+                            # append row of attack data to all detected attack data
                             display_data = pd.concat([display_data, attack_data], axis=0)
                             
+                            # update growing dataframe on web app
                             st.write(display_data)
                             
                             
                             # Increment attack count
                             ATTACK+=1
-
+                
+                # Get total streaming time from timer
                 elapsed_time = time.perf_counter() - start_time
 
+                # Get types of attacks and counts from attacks dataframe (`display_data`)
                 attacks = []
                 for i,j in zip(display_data['Attack Type'].unique(),
                           display_data['Attack Type'].value_counts(sort=False)):
                     attacks.append(f"{i}: {j}")
 
+                # Summary report
                 st.success(f"All packets scanned successfully! 🚀")
                 st.success(f"Total Packets: {TOTAL}")
                 st.success(f"Normal Packets ✔: {NORMAL}")
@@ -187,17 +229,18 @@ def run():
                 st.success(f"Avg. prediction time (server side) 🧠: {(TOTAL_PRED_TIME/TOTAL):.10f}s\n")
                 st.success(f"Overall run time ⌚: {elapsed_time:.3f}s")
 
-                display_data.reset_index(inplace=True)
-                csv = convert_df(display_data)
-                st.download_button(label="Download Analysis File",
-                                   data=csv,
-                                   file_name=f"IoT_IDS_Report_{file.name}.csv",
-                                   mime='text/csv')
-
-
             except Exception as e:
                 st.error("Error: Please check the file or your network connection: \n" + str(e))
                 # logger.info(f"An error occurred whilst attempting to call API:\n{e}")
+
+            # Report data download
+            if elapsed_time:
+                display_data.reset_index(drop=True, inplace=True)
+                csv = convert_df(display_data)
+                st.download_button(label="Download Analysis File",
+                                    data=csv,
+                                    file_name=f"IoT_IDS_Report_{file.name}.csv",
+                                    mime='text/csv')
 
 
 if __name__ == "__main__":

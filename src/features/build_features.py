@@ -7,6 +7,7 @@ import pandas as pd
 from pandas import DataFrame
 import joblib
 import numpy as np
+from numpy import ndarray
 from matplotlib import pyplot as plt
 import ipaddress
 from sklearn.preprocessing import OneHotEncoder
@@ -42,12 +43,13 @@ def load_data(path: str, Numpy: bool=True):
 
 
 def get_features(data: DataFrame, optimal_features: list, train: bool=True) -> DataFrame:
-    """Filter out optimal features from feature selection experiments
+    """Filter for optimal features (from feature selection experiments) from full dataset.
 
     Args:
         data (DataFrame): DataFrame with all features
         optimal_features (list, optional): List of optimal features. 
                                            Defaults to predefined list.
+        train (bool, optional): _description_. Defaults to True.
 
     Returns:
         DataFrame: DataFrame with only optimal features
@@ -77,7 +79,7 @@ def label_data(data: DataFrame, column: str, label_mapping: dict) -> DataFrame:
         label_mapping (dict): _description_
 
     Returns:
-        DataFrame: _description_
+        DataFrame: Dataset with `int` encoded label column
     """    
 
     progress_bar = tqdm(total=len(data), desc='Label Encoding', unit=" rows")
@@ -97,7 +99,7 @@ def undersample_data(data: DataFrame, label_column: str) -> DataFrame:
     """Undersample data points with label count greater than the mean label count of the dataset.
 
     Undersampling Strategy:
-        (label count / total label count) * mean label count
+        `(label count / total label count) * mean label count`
 
     This ensures that the overpopulated labels are trimmed proportionally, as opposed to 
     trimming all oversampled points to a fixed number, thus retaining the underlying
@@ -194,6 +196,8 @@ def convert_to_float(data: DataFrame) -> DataFrame:
 def split(data: DataFrame, target_col: str):
     """Split data into train and test sets
 
+    Uses the `train_test_split` method from `sklearn.model_selection`
+
     Args:
         data (DataFrame): DataFrame to be split
         target_col (str): Prediction target column
@@ -217,19 +221,19 @@ def scale_data(data: DataFrame=None,
                X_train: DataFrame=None, 
                X_test: DataFrame=None, 
                train: bool=True):
-    """Scale input data and return numpy array of the data
+    """Scale input data using `StandardScaler` and return Numpy array of the data.
 
     If train is set to true, fits scaler to X_train, saves scaler to memory and
-    transforms X_train and X_test to scaled numpy arrays.
+    transforms X_train and X_test to scaled Numpy arrays.
 
     If train is set to false, loads scaler from memory, transforms data and
-    returns scaled data numpy array
+    returns scaled data Numpy array.
 
     Args:
-        data (DataFrame, optional): _description_. Defaults to None.
-        X_train (DataFrame, optional): _description_. Defaults to None.
-        X_test (DataFrame, optional): _description_. Defaults to None.
-        train (bool, optional): _description_. Defaults to True.
+        data (DataFrame, optional): Data for inference generation. Defaults to None.
+        X_train (DataFrame, optional): Features set for training. Defaults to None.
+        X_test (DataFrame, optional): Features set for testing. Defaults to None.
+        train (bool, optional): if True, does not use `data` arg. Defaults to True.
 
     Returns:
         np.array: X_train_scaled, X_test_scaled if train==True
@@ -278,6 +282,26 @@ def preprocess(data: DataFrame,
                     'telnet_bruteforce':4, 'mirai_httpflooding':5, 'mirai_udpflooding':6,
                     'mitm_arpspoofing':7, 'scanning_host':8, 'scanning_port':9, 'scanning_os':10
                     }):
+    """Pipeline to apply all preprocessing steps defined in `build_features` module to dataset.
+
+    Extract optimal features from raw dataset, encode `str` labels to `int`, undersample imbalanced
+    labels, convert all features to `float`, split data into train and test set, and scale train
+    and test set.
+
+
+    Args:
+        data (DataFrame): Raw data to be preprocessed
+        train (bool, optional): if False, skips steps required only for training. Defaults to True.
+        save (bool, optional): if False, returns preprocessed data without dumping to memory. Defaults to True.
+        path (str, optional): Path to save preprocessed data. Defaults to './data/processed/'.
+        label_col (str, optional): Name of column with data label. Defaults to 'label'.
+        optimal_features (list, optional): List of features to be extracted from raw data. Defaults to predefined list.
+        label_mapping (_type_, optional): str to int dictionary for label encoding. Defaults to predefined dictionary.
+
+    Returns:
+        X_train_scaled (NDArray), X_test_scaled (NDArray), y_train (DataFrame), y_test (DataFrame): if train==True
+        data (DataFrame): if train==False
+    """    
 
     if train==True:
         data = get_features(data, optimal_features, train=True)
@@ -307,7 +331,18 @@ def preprocess(data: DataFrame,
 
         return data
     
-def inference_preprocess(data: DataFrame):
+def inference_preprocess(data: DataFrame) -> ndarray:
+    """Preprocessing pipeline for inference data.
+
+    Extract optimal features, convert data to float and apply scaler 
+    from memory. 
+
+    Args:
+        data (DataFrame): Data to be preprocessed
+
+    Returns:
+        ndarray: Preprocessed data
+    """    
     optimal_features=[
         'timestamp', 'ip_len', 'ip_id', 'ip_flags', 'ip_ttl', 'ip_proto',
         'ip_checksum', 'ip_dst', 'ip_dst_host','tcp_srcport', 'tcp_dstport',

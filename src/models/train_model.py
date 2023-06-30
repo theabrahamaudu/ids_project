@@ -1,5 +1,5 @@
 """
-Train ML model 
+Train and evaluate ML model 
 """
 # General
 import time
@@ -12,8 +12,19 @@ import xgboost as xgb
 from sklearn.metrics import classification_report
 
 
-def train_model(MODELS_DIR: str, X_TRAIN_PATH: str, Y_TRAIN_PATH: str):
+def train_model(MODELS_DIR: str, X_TRAIN_PATH: str, Y_TRAIN_PATH: str) -> float:
+    """Train XGBoost Model 
 
+    Args:
+        MODELS_DIR (str): Path to save trained model
+        X_TRAIN_PATH (str): Path to load train features
+        Y_TRAIN_PATH (str): Path to load train targets
+
+    Returns:
+        float: Model training time
+    """    
+
+    # Load train data from memory
     X_train_scaled = np.genfromtxt(X_TRAIN_PATH, delimiter=',')
     y_train = np.genfromtxt(Y_TRAIN_PATH, delimiter=',', skip_header=1)
 
@@ -48,7 +59,22 @@ def evaluate_model(MODELS_DIR: str,
                    X_TEST_PATH: str,
                    Y_TEST_PATH: str,
                    train_time: float,
-                ):
+                ) -> dict:
+    """Evaluate trained model.
+
+    Evaluate model with test data, dump model train time,
+    average inference time, label-based and overall F1-Scores 
+    as `JSON` to memory and return same metrics as `dict`.
+
+    Args:
+        MODELS_DIR (str): Path to load trained model
+        X_TEST_PATH (str): Path to load test features
+        Y_TEST_PATH (str): Path to load test features
+        train_time (float): return value from `train_model` function
+
+    Returns:
+        dict: Evaluation metrics
+    """
     
     X_test_scaled = np.genfromtxt(X_TEST_PATH, delimiter=',')
     y_test = np.genfromtxt(Y_TEST_PATH, delimiter=',', skip_header=1)

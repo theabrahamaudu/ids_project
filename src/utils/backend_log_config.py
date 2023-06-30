@@ -1,7 +1,19 @@
+"""
+Configuration module for model server logs
+"""
+
 import logging
+from logging import Logger
 
 
-def logger_backend():
+def logger_backend() -> Logger:
+    """Format logger, configure file handler and add handler
+    for backend logger.
+
+    Returns:
+        Logger: Logger for model server side
+    """    
+    
     backend_logger = logging.getLogger(__name__)
     backend_logger.setLevel(logging.DEBUG)
 

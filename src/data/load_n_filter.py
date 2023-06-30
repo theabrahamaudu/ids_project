@@ -10,6 +10,7 @@ import pandas as pd
 from tqdm import tqdm
 from pcap_to_csv import pcapng_to_csv
 import data_filters
+from src.utils.pipeline_log_config import pipeline as logger
 
 def scan_directory(directory: str, extension: str) -> list:
     """Check specified directory and return list of files with
@@ -34,11 +35,24 @@ def load_and_filter_files(directory_path: str,
                           destination_path: str,
                           merge: bool=False,
                           pick_up: bool=False):
+    """Load .pcap files from specified directory, filter them according to the rules
+    defined in `data_filters` module and create a new column with appropriate datapoint
+    labels. Save new dataframe to specified destination path.
+
+    Args:
+        directory_path (str): Path to load .pcap files
+        pcap_files_list (list): List of files in the directory to be filtered.
+        destination_path (str): Path to save labelled files
+        merge (bool, optional): if True, merges all the filtered data into one file. Defaults to False.
+        pick_up (bool, optional): if True, scans destination path to skip already filtered files. Defaults to False.
+    """    
 
     # Scan destination path for existing csv files
     existing_csv = scan_directory(destination_path,".csv")
     
     print(f"Converting {len(pcap_files_list)} pcap files to csv\n")
+    logger.info(f"Converting {len(pcap_files_list)} pcap files to csv\n")
+
 
     # Initialize fails counter
     FAILS = 0
@@ -46,19 +60,26 @@ def load_and_filter_files(directory_path: str,
     # Loop through the files in the directory and load each one
     for filename in pcap_files_list:
 
+        # Scan destination path if pick_up is True
         if pick_up==True and str(filename[:-5]+".csv") in existing_csv:
             print(f"{filename} already converted\n")
+            logger.info("'pick_up' set to continue from last run")
+            logger.info(f"{filename} already converted\n")
         else:
 
             try:
                 print(f"Coverting {filename} to csv...")
+                logger.info(f"Coverting {filename} to csv...")
+                # Convert file to csv
                 csv_file = pcapng_to_csv(
                     PCAPNG_FILE=str(directory_path+"/"+filename),
                     CSV_FOLDER_PATH='./data/interim'
                 )
+                # Load converted csv to memory
                 data_df = pd.read_csv(str("./data/interim"+"/"+filename[:-5]+".csv"))
                 
                 print(f"Adding labels to {filename[:-5]}.csv...\n")
+                logger.info(f"Adding labels to {filename[:-5]}.csv...\n")
                 # filter the files using the specific filter function for each file
                 if "benign-dec.pcap" in filename:
                     data_labelled = data_filters.benign_dec(data_df)
@@ -179,15 +200,19 @@ def load_and_filter_files(directory_path: str,
                                         index=False, header=True, mode='w')
             except Exception as e:
                 print(f"An error occured with file '{filename}': \n", e)
+                logger.warning(f"An error occured with file '{filename}': \n", e)
                 FAILS+=1
                 
 
     print(f"\n{len(pcap_files_list) - FAILS} pcap files labelled and saved to csv\n",
           f"{FAILS} files could not be converted. Read terminal logs for details")
+    logger.info(f"\n{len(pcap_files_list) - FAILS} pcap files labelled and saved to csv\n{FAILS} files could not be converted. Read terminal logs for details")
 
     # If merge is set to true, create a csv file with all the data
     if merge is True:
         print(f"Merging {len(pcap_files_list)} csv files...")
+        logger.info("Merge set to True")
+        logger.info(f"Merging {len(pcap_files_list)} csv files...")
         # Initialize counter
         COUNT = 0
 
@@ -201,13 +226,16 @@ def load_and_filter_files(directory_path: str,
             labelled_dataframe = pd.read_csv(str(destination_path+"/"+filename[:-5]+".csv"))
 
             if COUNT == 1:
+                # Create new marge file
                 labelled_dataframe.to_csv(str(destination_path+"/"+"all_data_labelled.csv"),
                                           index=False, header=True, mode='w')
             else:
+                # Update merge file
                 labelled_dataframe.to_csv(str(destination_path+"/"+"all_data_labelled.csv"),
                                           index=False, header=False, mode='a')
         
         print(f"|| {COUNT} csv files merged and saved to {destination_path} ||")
+        logger.info(f"|| {COUNT} csv files merged and saved to {destination_path} ||")
 
         
         

@@ -1,6 +1,6 @@
 """
-External pcapng file version
 This module is used to read and convert packet data from pcapng file to csv format
+on demand
 
 """
 
@@ -12,7 +12,10 @@ from tqdm import tqdm
 
 
 def pcap_stream(PCAPNG_FILE: str) -> DataFrame:
-    """_summary_
+    """Yield packets from a PCAP file as DataFrame
+
+    Uses pyshark to read PCAP file and then parses the specified fields
+    to generte DataFrame format of the data
 
     Args:
         PCAPNG_FILE (str): _description_

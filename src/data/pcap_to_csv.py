@@ -1,12 +1,13 @@
 """
-External pcapng file version
 This module is used to read and convert packet data from pcapng file to csv format
+in chunks.
 
 """
 
 import re
 import pyshark
 import pandas as pd
+from pandas import DataFrame
 from tqdm import tqdm
 
 
@@ -16,18 +17,23 @@ def pcapng_to_csv(PCAPNG_FILE: str,
                   CSV_NAME: str=None,
                   BATCH_SIZE: int = 1000,
                   data_desc_path: str = './data/external/dataset_description.xlsx',
-                  ):
-    """_summary_
+                  ) -> DataFrame:
+    """Convert PCAP or PCAPNG file to CSV file and return same as Pandas Dataframe.
+
+    Uses PyShark module to read PCAP file and then parses the specified fields to
+    collect required data into Pandas DataFrame which is then saved to permanent
+    memory in chunks to save working memory.
 
     Args:
-        PCAPNG_FILE (str): _description_
-        CSV_FILE_PATH (str): _description_
-        BATCH_SIZE (int, optional): _description_. Defaults to 1000.
-        data_desc_path (str, optional): _description_. Defaults to '../data/external/dataset_description.xlsx'.
+        PCAPNG_FILE (str): PCAP or PCAPNG file to be converted
+        CSV_FOLDER_PATH (str): Path to save the CSV file generated
+        CSV_NAME (str, optional): Output CSV file name, uses PCAP file name with .csv extension if not provided. Defaults to None.
+        BATCH_SIZE (int, optional): Number of packets to parse before dumping to memory. Defaults to 1000.
+        data_desc_path (str, optional): Path to the dataset description file. Defaults to './data/external/dataset_description.xlsx'.
 
     Returns:
-        _type_: _description_
-    """    
+        DataFrame: _description_
+    """        
     # Load data description
     data_description = pd.read_excel(data_desc_path, 
                                  sheet_name='Files & description', 

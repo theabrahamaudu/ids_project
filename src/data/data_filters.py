@@ -1,13 +1,14 @@
 """
 To filter datasets and apply labels based on
-defiend parameters in dataset description
+defined parameters in dataset description
 """
 import ipaddress
 from pandas import DataFrame
 
 
 def check_ip_range(x, ip_range):
-    """_summary_
+    """Generates IP address range from string notation and returns boolean
+    to indicate if the Ip address supplied falls within that range
 
     Args:
         x (_type_): IP address to be searched for in IP address range
@@ -68,7 +69,7 @@ def sample_filter_fn(data: DataFrame) -> DataFrame:
 
 # ____ Define Filter Functions ____________________________
 def benign_dec(data: DataFrame):
-    """_summary_
+    """Filters for normal packets
 
     Args:
         data (DataFrame): _description_
@@ -82,17 +83,16 @@ def benign_dec(data: DataFrame):
 
 
 def mitm_arpspoofing_1_3_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Man-in-the-Middle attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
     """    
 
-    # Man-in-the-middle ARP Spoofing
     filter_condition = (
         (data['eth_addr'] == 'f0:18:98:5e:ff:9f') &
         (
@@ -122,17 +122,16 @@ def mitm_arpspoofing_1_3_dec_filter(data: DataFrame) -> DataFrame:
 
 
 def mitm_arpspoofing_4_6_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Man-in-the-Middle attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
     """    
 
-    # Man-in-the-middle ARP Spoofing
     filter_condition = (
         (data['eth_addr'] == 'f0:18:98:5e:ff:9f') &
         (
@@ -159,28 +158,17 @@ def mitm_arpspoofing_4_6_dec_filter(data: DataFrame) -> DataFrame:
     return data
 
 
-
-
-
-
-
-
-
-
-
-
 def dos_synflooding_1_2_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Denial-of-Service attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
     """    
 
-    # Man-in-the-middle ARP Spoofing
     filter_condition = (
         (data['ip_src'].apply(lambda x: check_ip_range(x,'222.0.0.0/8'))) &
         (data['tcp_flags_syn'] == 1) &
@@ -198,17 +186,15 @@ def dos_synflooding_1_2_dec_filter(data: DataFrame) -> DataFrame:
 
 
 def dos_synflooding_3_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Denial-of-Service attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
-
-    # Man-in-the-middle ARP Spoofing
+    """   
     filter_condition = (
         (data['ip_src'].apply(lambda x: check_ip_range(x,'111.0.0.0/8'))) &
         (data['tcp_flags_syn'] == 1) &
@@ -226,17 +212,15 @@ def dos_synflooding_3_dec_filter(data: DataFrame) -> DataFrame:
 
 
 def dos_synflooding_4_6_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Denial-of-Service attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
-
-    # Man-in-the-middle ARP Spoofing
+    """   
     filter_condition = (
         (data['ip_dst'] == '192.168.0.24') &
         (data['tcp_flags_syn'] == 1) &
@@ -253,27 +237,16 @@ def dos_synflooding_4_6_dec_filter(data: DataFrame) -> DataFrame:
     return data
 
 
-
-
-
-
-
-
-
-
-
-
-
 def scan_hostport_1_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Host Discovery and Port Scanning attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
+    """      
 
     # Scanning -- Host Discovery
     scan_hostport_1_dec_1 = (
@@ -302,16 +275,15 @@ def scan_hostport_1_dec_filter(data: DataFrame) -> DataFrame:
 
 
 def scan_hostport_2_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Host Discovery and Port Scanning attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
-
+    """  
     # Scanning -- Host Discovery
     scan_hostport_2_dec_1 = (
         (data['eth_src'] == 'f0:18:98:5e:ff:9f') &
@@ -339,15 +311,15 @@ def scan_hostport_2_dec_filter(data: DataFrame) -> DataFrame:
 
 
 def scan_hostport_3_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Host Discovery and Port Scanning attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
+    """     
 
     # Scanning -- Host Discovery
     scan_hostport_3_dec_1 = (
@@ -376,15 +348,15 @@ def scan_hostport_3_dec_filter(data: DataFrame) -> DataFrame:
 
 
 def scan_hostport_4_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Host Discovery and Port Scanning attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
+    """      
 
     # Scanning -- Host Discovery
     scan_hostport_4_dec_1 = (
@@ -414,15 +386,15 @@ def scan_hostport_4_dec_filter(data: DataFrame) -> DataFrame:
 
 
 def scan_hostport_5_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Host Discovery and Port Scanning attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
+    """      
 
     # Scanning -- Host Discovery
     scan_hostport_5_dec_1 = (
@@ -451,15 +423,15 @@ def scan_hostport_5_dec_filter(data: DataFrame) -> DataFrame:
 
 
 def scan_hostport_6_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Host Discovery and Port Scanning attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
+    """     
 
     # Scanning -- Host Discovery
     scan_hostport_6_dec_1 = (
@@ -487,23 +459,16 @@ def scan_hostport_6_dec_filter(data: DataFrame) -> DataFrame:
     return data
 
 
-
-
-
-
-
-
-
 def scan_portos_1_3_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for OS and Port Scanning attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
+    """     
 
     # Scanning -- Port Scanning
     scan_portos_1_dec_1 = (
@@ -536,11 +501,11 @@ def scan_portos_1_3_dec_filter(data: DataFrame) -> DataFrame:
 
 
 def scan_portos_4_6_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for OS and Port Scanning attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
@@ -576,21 +541,17 @@ def scan_portos_4_6_dec_filter(data: DataFrame) -> DataFrame:
     return data
 
 
-
-
-
 def mirai_udpflooding_1_4_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Mirai Botnet attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
+    """ 
 
-    # Man-in-the-middle ARP Spoofing
     filter_condition = (data['ip_dst'] == '210.89.164.90')
 
     filters = [(filter_condition, 'mirai_udpflooding', None)]
@@ -602,20 +563,17 @@ def mirai_udpflooding_1_4_dec_filter(data: DataFrame) -> DataFrame:
     return data
 
 
-
-
 def mirai_ackflooding_1_4_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Mirai Botnet attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
+    """ 
 
-    # Man-in-the-middle ARP Spoofing
     filter_condition = (data['ip_dst'] == '210.89.164.90')
 
     filters = [(filter_condition, 'mirai_ackflooding', None)]
@@ -628,17 +586,16 @@ def mirai_ackflooding_1_4_dec_filter(data: DataFrame) -> DataFrame:
 
 
 def mirai_httpflooding_1_4_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Mirai Botnet attacks
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
+    """ 
 
-    # Man-in-the-middle ARP Spoofing
     filter_condition = (data['ip_dst'] == '210.89.164.90')
 
     filters = [(filter_condition, 'mirai_httpflooding', None)]
@@ -653,16 +610,16 @@ def mirai_httpflooding_1_4_dec_filter(data: DataFrame) -> DataFrame:
 
 
 def mirai_hostbruteforce_1_3_n_5_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Mirai Botnet Host Discovery and Telnet Bruteforce attacks 
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
-
+    """ 
+ 
     # Scanning -- Host Discovery
     mirai_hostbruteforce_1_dec_1 = (
         (data['arp_dst_proto_ipv4'].apply(lambda x: check_ip_range(x,'192.168.0.0/24'))) &
@@ -686,16 +643,16 @@ def mirai_hostbruteforce_1_3_n_5_dec_filter(data: DataFrame) -> DataFrame:
 
 
 def mirai_hostbruteforce_2_n_4_dec_filter(data: DataFrame) -> DataFrame:
-    """Takes dataframe and applies filter condition tuples contained in list
+    """Takes dataframe and applies filter condition tuples contained in 
+    predefined list for Mirai Botnet Host Discovery and Telnet Bruteforce attacks 
 
     Args:
         data (DataFrame): DataFrame object to be filtered
-        filters (list): List containing filter tuples to be applied
 
     Returns:
         DataFrame: Labeled DataFrame with new column 'label'
-    """    
-
+    """ 
+ 
     # Scanning -- Host Discovery
     mirai_hostbruteforce_1_dec_1 = (
         (data['arp_dst_proto_ipv4'].apply(lambda x: check_ip_range(x,'192.168.0.0/24'))) &

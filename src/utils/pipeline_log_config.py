@@ -1,7 +1,18 @@
+"""
+Configuration module for model building pipeline logs
+"""
+
 import logging
+from logging import Logger
 
 
-def logger_pipeline():
+def logger_pipeline() -> Logger:
+    """Format logger, configure file handler and add handler
+    for pipeline logger.
+
+    Returns:
+        Logger: Logger for model building pipeline
+    """ 
     pipeline_logger = logging.getLogger(__name__)
     pipeline_logger.setLevel(logging.DEBUG)
 
