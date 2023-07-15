@@ -63,6 +63,60 @@ Project Organization
 
 
 --------
+This repository contains an AI-powered cloud-based intrusion detection system (IDS) designed specifically for IoT networks. The system leverages an XGB (Extreme Gradient Boosting) model to detect and classify various types of attacks, ensuring the security and integrity of IoT environments.
+
+## Dataset Overview
+The dataset used in this system consists of several types of attacks commonly encountered in IoT networks:
+
+- MITM-ARPSpoofing-n(1~6)-dec.pcap: This dataset includes traffic with both benign and Man-in-the-Middle (ARP spoofing) attacks.
+- DoS-SYNFlooding-n(1~6)-dec.pcap: Contains traffic with both benign and Denial of Service (SYN flooding) attacks.
+- Scan-HostPort-n(1~6)-dec.pcap: Includes traffic with both benign and scan (host and port scan) attacks.
+- Scan-PortOS-n(1~6)-dec.pcap: Contains traffic with both benign and scan (port and OS scan) attacks.
+- Mirai-UDPFlooding-n(1~4)-dec.pcap, Mirai-ACKFlooding-n(1~4)-dec.pcap, Mirai-HTTPFlooding-n(1~4)-dec.pcap: These datasets include traffic with both benign and three typical attacks (UDP/ACK/HTTP Flooding) executed by zombie PCs compromised by the Mirai malware.
+- Mirai-HostBruteforce-n(1~5)-dec.pcap: Contains traffic with both benign and the initial phase of the Mirai malware, including host discovery and Telnet brute-force attacks.
+
+## System Architecture
+The system is designed to streamline the training and inference pipelines, ensuring code reusability and consistency in outcomes. Here is an overview of the system architecture:
+
+![image](https://github.com/theabrahamaudu/ids_project/assets/82980669/1f247c2b-2bdc-4fa3-8a79-bdca7f427e40)
+
+### Training Pipeline
+The packet data is first ingested by the ingestion module, which reads the packets into dataframes for further processing. The preprocessing module performs necessary transformations to prepare the data for model training and validation. During the model training phase, a decision is made whether to save the trained model or retrain it based on human judgment of its performance.
+
+### Inference Pipeline
+The API module loads the saved model and provides endpoints for user interaction. Users can upload raw data, which is then processed and made available for retrieval. Requests can be made to analyze and classify the processed data points based on the recognized attack classes in the model. The user interface facilitates interactive communication with the API, enabling packet analysis and the option to download analysis reports for future reference by network security personnel.
+
+### Real-time Monitoring
+The system architecture includes the capability to establish remote connections to networks and stream packets in real-time to the IDS. This enables active monitoring of network packets and immediate detection of intrusions as they occur.
+
+### Simulation of Real-time Data
+During the development phase, due to limitations in accessing a real-time IoT system, the data ingestion module was configured to handle bulk data instead. To simulate the streaming process to the prediction endpoint, the module mimicked the behavior of receiving data as if it were being streamed live from a remote location. This approach ensured that the system could be tested and evaluated even without real-time data availability.
+
+### Deployment and User Interface
+To ensure component separation, the user interface and API modules are deployed on different servers. The API engine is deployed on an Amazon Web Services (AWS) Elastic Compute Cluster (EC2) instance, while the user interface communicates with the API through a secure HTTPS connection. The user interface provides real-time updates to the user by displaying newly discovered attack packets in a dynamic window. These attack packets are presented in a human-readable format, along with their corresponding packet parameters.
+
+After the analysis process is completed, the generated data is made available for download in CSV format. This enables network security personnel to perform in-depth analysis and make informed decisions regarding network security based on the specific details of the flagged packets.
+
+### Performance Metrics
+The final XGB (Extreme Gradient Boosting) model achieved impressive performance metrics:
+
+- F1 macro avg: 0.997
+- F1 weighted avg: 1.0
+- Class 0.0: 1.0
+- Class 1.0: 1.0
+- Class 10.0: 0.973
+- Class 2.0: 1.0
+- Class 3.0: 0.995
+- Class 4.0: 1.0
+- Class 5.0: 1.0
+- Class 6.0: 1.0
+- Class 7.0: 1.0
+- Class 8.0: 1.0
+- Class 9.0: 0.999
+- Inference Time per Data Point: 1.0665294169455698e-05s
+- Training Time: 151.546875s
+
+--------
 
 ## Getting Started
 To use the IoT IDS App, visit <a href="https://iotids.streamlit.app/">IOT IDS App</a>.

@@ -68,10 +68,10 @@ def run():
 
     st.sidebar.text("Steps:\n"
                     "1. Choose packet data file\n"
-                    "2. Upload file"
-                    "3. Process file"
+                    "2. Upload file\n"
+                    "3. Process file\n"
                     "4. Initialize IDS\n"
-                    "5. Download flagged packets for further analysis")
+                    "5. Download flagged packets\n   for further analysis")
     
     with st.spinner("Adding file to queue..."):
         file = st.file_uploader("Choose network packet data (PCAP)", type=['pcap', 'pcapng'])

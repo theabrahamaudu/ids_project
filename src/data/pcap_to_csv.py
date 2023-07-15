@@ -32,7 +32,7 @@ def pcapng_to_csv(PCAPNG_FILE: str,
         data_desc_path (str, optional): Path to the dataset description file. Defaults to './data/external/dataset_description.xlsx'.
 
     Returns:
-        DataFrame: _description_
+        DataFrame: DataFrame of parsed network packet data.
     """        
     # Load data description
     data_description = pd.read_excel(data_desc_path, 
