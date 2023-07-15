@@ -239,27 +239,27 @@ def load_and_filter_files(directory_path: str,
 
         
         
-if __name__ == '__main__':
-    # Specify the directory to scan
-    directory_path = "./data/external"
+# if __name__ == '__main__':
+#     # Specify the directory to scan
+#     directory_path = "./data/external"
 
-    # Labelled data directory
-    destination_path = './data/labelled'
+#     # Labelled data directory
+#     destination_path = './data/labelled'
 
-    # Call the function to scan the directory and get the list of .pcap files
-    pcap_files_list = scan_directory(directory_path, ".pcap")
+#     # Call the function to scan the directory and get the list of .pcap files
+#     pcap_files_list = scan_directory(directory_path, ".pcap")
 
-    # Remove noted bad files
-    pcap_files_list.remove('dos-synflooding-6-dec.pcap')
-    pcap_files_list.remove('mirai-hostbruteforce-3-dec.pcap')
+#     # Remove noted bad files
+#     pcap_files_list.remove('dos-synflooding-6-dec.pcap')
+#     pcap_files_list.remove('mirai-hostbruteforce-3-dec.pcap')
 
-    print(pcap_files_list)
+#     print(pcap_files_list)
 
-    # the_list = ['dos-synflooding-4-dec.pcap', 'mirai-udpflooding-3-dec.pcap', 'scan-portos-4-dec.pcap',
-    #             'mitm-arpspoofing-4-dec.pcap']
+#     # the_list = ['dos-synflooding-4-dec.pcap', 'mirai-udpflooding-3-dec.pcap', 'scan-portos-4-dec.pcap',
+#     #             'mitm-arpspoofing-4-dec.pcap']
 
-    load_and_filter_files(directory_path=directory_path,
-                          pcap_files_list=pcap_files_list,
-                          destination_path=destination_path,
-                          merge=True,
-                          pick_up=True)
+#     load_and_filter_files(directory_path=directory_path,
+#                           pcap_files_list=pcap_files_list,
+#                           destination_path=destination_path,
+#                           merge=True,
+#                           pick_up=True)

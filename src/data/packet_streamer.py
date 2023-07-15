@@ -1,5 +1,5 @@
 """
-This module is used to read and convert packet data from pcapng file to csv format
+This module is used to read and convert packet data from pcapng file to pandas dataframe
 on demand
 
 """
