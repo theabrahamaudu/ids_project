@@ -8,8 +8,8 @@ Saves labelled files in specified directory
 import os
 import pandas as pd
 from tqdm import tqdm
-from pcap_to_csv import pcapng_to_csv
-import data_filters
+from src.data.pcap_to_csv import pcapng_to_csv
+import src.data.data_filters as data_filters
 from src.utils.pipeline_log_config import pipeline as logger
 
 def scan_directory(directory: str, extension: str) -> list:

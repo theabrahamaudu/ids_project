@@ -22,9 +22,13 @@ try:
     pcap_files_list = scan_directory(directory_path, ".pcap")
 
     # Remove noted bad files
-    pcap_files_list.remove('dos-synflooding-6-dec.pcap')
-    pcap_files_list.remove('mirai-hostbruteforce-3-dec.pcap')
+    bad_files = ['dos-synflooding-6-dec.pcap', 'mirai-hostbruteforce-3-dec.pcap']
 
+    for file in bad_files:
+        if file in pcap_files_list: 
+            pcap_files_list.remove(file)
+
+    # Initiate load and filter step
     load_and_filter_files(directory_path=directory_path,
                         pcap_files_list=pcap_files_list,
                         destination_path=destination_path,
@@ -33,7 +37,7 @@ try:
                         )
     logger.info("Loading, filtering and labeling complete")
 except Exception as e:
-    logger.warning(f"Error loading, filtering and labeling data: {e}")
+    logger.warning(f"Error loading, filtering and labeling data:\n{e}")
 
 ## ----------- Preprocess and Split Data ------------ ##
 logger.info('Preprocessing and splitting data')
@@ -45,7 +49,7 @@ try:
                                                                 save=True)
     logger.info('Preprocessing and splitting complete')
 except Exception as e:
-    logger.warning(f'Error preprocessing and splitting data: {e}')
+    logger.warning(f'Error preprocessing and splitting data:\n{e}')
 
 ## ------------------- Train Model ------------------- ##
 logger.info('Training model')
@@ -59,7 +63,7 @@ try:
     train_time = train_model(MODELS_DIR, X_TRAIN_PATH, Y_TRAIN_PATH)
     logger.info('Model training complete')
 except Exception as e:
-    logger.warning(f"Error training model: {e}")
+    logger.warning(f"Error training model:\n{e}")
 
 
 ## ------------------ Evaluate Model ----------------- ##
@@ -78,4 +82,4 @@ try:
                                 )
     logger.info('Model evaluation complete')
 except Exception as e:
-    logger.warning(f"Error evaluating model: {e}")
+    logger.warning(f"Error evaluating model:\n{e}")

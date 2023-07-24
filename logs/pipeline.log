@@ -1,1 +1,138 @@
-2023-06-28 19:27:04,372:train_model.py:<module>:INFO:Training log:
+
+2023-07-24 00:48:43,101:main.py:<module>:INFO:Initializing full pipeline:
+2023-07-24 00:48:43,101:main.py:<module>:INFO:Loading, filtering and labeling data:
+2023-07-24 00:48:43,103:load_n_filter.py:load_and_filter_files:INFO:Converting 40 pcap files to csv
+:
+2023-07-24 00:48:43,104:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,104:load_n_filter.py:load_and_filter_files:INFO:benign-dec.pcap already converted
+:
+2023-07-24 00:48:43,105:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,106:load_n_filter.py:load_and_filter_files:INFO:dos-synflooding-1-dec.pcap already converted
+:
+2023-07-24 00:48:43,107:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,107:load_n_filter.py:load_and_filter_files:INFO:dos-synflooding-2-dec.pcap already converted
+:
+2023-07-24 00:48:43,108:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,109:load_n_filter.py:load_and_filter_files:INFO:dos-synflooding-3-dec.pcap already converted
+:
+2023-07-24 00:48:43,110:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,110:load_n_filter.py:load_and_filter_files:INFO:dos-synflooding-4-dec.pcap already converted
+:
+2023-07-24 00:48:43,111:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,111:load_n_filter.py:load_and_filter_files:INFO:dos-synflooding-5-dec.pcap already converted
+:
+2023-07-24 00:48:43,112:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,112:load_n_filter.py:load_and_filter_files:INFO:mirai-ackflooding-1-dec.pcap already converted
+:
+2023-07-24 00:48:43,113:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,113:load_n_filter.py:load_and_filter_files:INFO:mirai-ackflooding-2-dec.pcap already converted
+:
+2023-07-24 00:48:43,114:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,115:load_n_filter.py:load_and_filter_files:INFO:mirai-ackflooding-3-dec.pcap already converted
+:
+2023-07-24 00:48:43,116:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,116:load_n_filter.py:load_and_filter_files:INFO:mirai-ackflooding-4-dec.pcap already converted
+:
+2023-07-24 00:48:43,117:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,118:load_n_filter.py:load_and_filter_files:INFO:mirai-hostbruteforce-1-dec.pcap already converted
+:
+2023-07-24 00:48:43,119:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,120:load_n_filter.py:load_and_filter_files:INFO:mirai-hostbruteforce-2-dec.pcap already converted
+:
+2023-07-24 00:48:43,121:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,121:load_n_filter.py:load_and_filter_files:INFO:mirai-hostbruteforce-4-dec.pcap already converted
+:
+2023-07-24 00:48:43,122:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,122:load_n_filter.py:load_and_filter_files:INFO:mirai-hostbruteforce-5-dec.pcap already converted
+:
+2023-07-24 00:48:43,123:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,124:load_n_filter.py:load_and_filter_files:INFO:mirai-httpflooding-1-dec.pcap already converted
+:
+2023-07-24 00:48:43,125:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,125:load_n_filter.py:load_and_filter_files:INFO:mirai-httpflooding-2-dec.pcap already converted
+:
+2023-07-24 00:48:43,126:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,126:load_n_filter.py:load_and_filter_files:INFO:mirai-httpflooding-3-dec.pcap already converted
+:
+2023-07-24 00:48:43,127:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,128:load_n_filter.py:load_and_filter_files:INFO:mirai-httpflooding-4-dec.pcap already converted
+:
+2023-07-24 00:48:43,129:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,129:load_n_filter.py:load_and_filter_files:INFO:mirai-udpflooding-1-dec.pcap already converted
+:
+2023-07-24 00:48:43,130:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,130:load_n_filter.py:load_and_filter_files:INFO:mirai-udpflooding-2-dec.pcap already converted
+:
+2023-07-24 00:48:43,131:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,131:load_n_filter.py:load_and_filter_files:INFO:mirai-udpflooding-3-dec.pcap already converted
+:
+2023-07-24 00:48:43,132:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,133:load_n_filter.py:load_and_filter_files:INFO:mirai-udpflooding-4-dec.pcap already converted
+:
+2023-07-24 00:48:43,134:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,134:load_n_filter.py:load_and_filter_files:INFO:mitm-arpspoofing-1-dec.pcap already converted
+:
+2023-07-24 00:48:43,135:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,135:load_n_filter.py:load_and_filter_files:INFO:mitm-arpspoofing-2-dec.pcap already converted
+:
+2023-07-24 00:48:43,136:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,137:load_n_filter.py:load_and_filter_files:INFO:mitm-arpspoofing-3-dec.pcap already converted
+:
+2023-07-24 00:48:43,138:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,138:load_n_filter.py:load_and_filter_files:INFO:mitm-arpspoofing-4-dec.pcap already converted
+:
+2023-07-24 00:48:43,139:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,139:load_n_filter.py:load_and_filter_files:INFO:mitm-arpspoofing-5-dec.pcap already converted
+:
+2023-07-24 00:48:43,140:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,140:load_n_filter.py:load_and_filter_files:INFO:mitm-arpspoofing-6-dec.pcap already converted
+:
+2023-07-24 00:48:43,142:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,142:load_n_filter.py:load_and_filter_files:INFO:scan-hostport-1-dec.pcap already converted
+:
+2023-07-24 00:48:43,143:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,143:load_n_filter.py:load_and_filter_files:INFO:scan-hostport-2-dec.pcap already converted
+:
+2023-07-24 00:48:43,144:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,144:load_n_filter.py:load_and_filter_files:INFO:scan-hostport-3-dec.pcap already converted
+:
+2023-07-24 00:48:43,145:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,145:load_n_filter.py:load_and_filter_files:INFO:scan-hostport-4-dec.pcap already converted
+:
+2023-07-24 00:48:43,315:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,316:load_n_filter.py:load_and_filter_files:INFO:scan-hostport-5-dec.pcap already converted
+:
+2023-07-24 00:48:43,318:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,319:load_n_filter.py:load_and_filter_files:INFO:scan-hostport-6-dec.pcap already converted
+:
+2023-07-24 00:48:43,327:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,327:load_n_filter.py:load_and_filter_files:INFO:scan-portos-1-dec.pcap already converted
+:
+2023-07-24 00:48:43,328:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,328:load_n_filter.py:load_and_filter_files:INFO:scan-portos-2-dec.pcap already converted
+:
+2023-07-24 00:48:43,329:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,330:load_n_filter.py:load_and_filter_files:INFO:scan-portos-3-dec.pcap already converted
+:
+2023-07-24 00:48:43,331:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,331:load_n_filter.py:load_and_filter_files:INFO:scan-portos-4-dec.pcap already converted
+:
+2023-07-24 00:48:43,332:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,332:load_n_filter.py:load_and_filter_files:INFO:scan-portos-5-dec.pcap already converted
+:
+2023-07-24 00:48:43,333:load_n_filter.py:load_and_filter_files:INFO:'pick_up' set to continue from last run:
+2023-07-24 00:48:43,333:load_n_filter.py:load_and_filter_files:INFO:scan-portos-6-dec.pcap already converted
+:
+2023-07-24 00:48:43,335:load_n_filter.py:load_and_filter_files:INFO:
+40 pcap files labelled and saved to csv
+0 files could not be converted. Read terminal logs for details:
+2023-07-24 00:48:43,335:load_n_filter.py:load_and_filter_files:INFO:Merge set to True:
+2023-07-24 00:48:43,335:load_n_filter.py:load_and_filter_files:INFO:Merging 40 csv files...:
+2023-07-24 00:55:03,988:load_n_filter.py:load_and_filter_files:INFO:|| 40 csv files merged and saved to ./data/labelled ||:
+2023-07-24 00:55:03,993:main.py:<module>:INFO:Loading, filtering and labeling complete:
+2023-07-24 00:55:03,994:main.py:<module>:INFO:Preprocessing and splitting data:
+2023-07-24 01:00:10,510:main.py:<module>:INFO:Preprocessing and splitting complete:
+2023-07-24 01:00:10,511:main.py:<module>:INFO:Training model:
+2023-07-24 01:01:23,656:main.py:<module>:INFO:Model training complete:
+2023-07-24 01:01:23,657:main.py:<module>:INFO:Evaluating model:
+2023-07-24 01:01:35,767:main.py:<module>:INFO:Model evaluation complete:
